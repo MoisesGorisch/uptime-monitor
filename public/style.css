@@ -945,3 +945,6 @@ form>.primary {
   .theme-toggle { margin-left:auto; padding:6px; font-size:10px; }
 }
 
+
+.language-label{flex-shrink:0}.language-label select{max-width:150px;font:inherit;padding:6px 8px}
+@media(max-width:700px){.app-header{flex-wrap:wrap}.language-label select{max-width:125px}}
