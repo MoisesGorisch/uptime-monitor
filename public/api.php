@@ -27,14 +27,18 @@ try {
     if (($input['action'] ?? '')==='create') {
         if ((int)$db->query('SELECT COUNT(*) FROM monitors')->fetchColumn()>=20) throw new InvalidArgumentException('Limite desta versão: 20 monitores.');
         $m=validateMonitor($input); $db->prepare('INSERT INTO monitors (name,url,interval_seconds,slow_ms,expected_text) VALUES (?,?,?,?,?)')->execute(array_values($m));
+    } elseif (in_array($input['action'] ?? '', ['update','pause','resume','delete'], true)) {
+        $lock=monitorLock();
+        try { manageMonitor($db,$input); } finally { flock($lock,LOCK_UN); fclose($lock); }
     } elseif (($input['action'] ?? '')==='check') {
+        $lock=monitorLock();
+        try {
         $q=$db->prepare('SELECT * FROM monitors WHERE id=?'); $q->execute([(int)($input['id'] ?? 0)]); $m=$q->fetch();
         if (!$m) throw new InvalidArgumentException('Monitor não encontrado.');
+        if ((int)$m['paused']===1) throw new InvalidArgumentException('Retome o monitor antes de verificar.');
         if ($m['last_checked'] && time()-(int)$m['last_checked']<15) throw new InvalidArgumentException('Aguarde 15 segundos entre verificações manuais.');
-        // Shared lock prevents the CLI worker and manual checks from overlapping.
-        $lock=fopen(dirname(__DIR__).'/var/worker.lock','c');
-        if (!flock($lock, LOCK_EX | LOCK_NB)) throw new InvalidArgumentException('Há uma verificação em andamento. Tente novamente.');
-        try { recordCheck($db,(int)$m['id'],checkUrl($m)); } finally { flock($lock,LOCK_UN); fclose($lock); }
+        recordCheck($db,(int)$m['id'],checkUrl($m));
+        } finally { flock($lock,LOCK_UN); fclose($lock); }
     } else throw new InvalidArgumentException('Ação inválida.');
     echo json_encode(['ok'=>true]);
 } catch (InvalidArgumentException | JsonException $e) { http_response_code(422); echo json_encode(['error'=>pulseMessage($e instanceof JsonException ? 'Envie um objeto JSON válido.' : $e->getMessage())]); }
