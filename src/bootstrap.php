@@ -19,26 +19,41 @@ function db(): PDO
 
 function validateMonitor(array $input): array
 {
+    foreach (['name', 'url', 'expected_text'] as $field) {
+        if (isset($input[$field]) && !is_string($input[$field])) {
+            throw new InvalidArgumentException('Os campos de texto devem conter apenas texto.');
+        }
+    }
     $name = trim((string)($input['name'] ?? ''));
     $url = trim((string)($input['url'] ?? ''));
     $parts = parse_url($url);
     if ($name === '' || strlen($name) > 80) throw new InvalidArgumentException('Informe um nome com até 80 caracteres.');
     if (strlen($url) > 2048 || !filter_var($url, FILTER_VALIDATE_URL) || !$parts || !in_array($parts['scheme'] ?? '', ['http','https'], true) || isset($parts['user']) || isset($parts['pass']) || isset($parts['fragment']) || !in_array($parts['port'] ?? 443, [80,443], true)) throw new InvalidArgumentException('Use uma URL HTTP/HTTPS, sem credenciais, fragmentos ou portas alternativas.');
+    $host = strtolower($parts['host']);
+    if (preg_match('/[\x00-\x20\x7f]/', $url) || $host === 'localhost' || preg_match('/\.(localhost|local|internal)$/', $host)
+        || (filter_var(trim($host, '[]'), FILTER_VALIDATE_IP) && !publicIpv4($host))) {
+        throw new InvalidArgumentException('Use um endereço público; destinos locais e internos não são permitidos.');
+    }
     $interval = filter_var($input['interval_seconds'] ?? 300, FILTER_VALIDATE_INT);
     $slow = filter_var($input['slow_ms'] ?? 1500, FILTER_VALIDATE_INT);
     $expected = trim((string)($input['expected_text'] ?? ''));
     if ($interval === false || $interval < 60 || $interval > 86400) throw new InvalidArgumentException('Intervalo permitido: 60 a 86400 segundos.');
     if ($slow === false || $slow < 100 || $slow > 10000) throw new InvalidArgumentException('Limite de lentidão permitido: 100 a 10000 ms.');
+    if (str_contains($name, "\0") || str_contains($expected, "\0")) throw new InvalidArgumentException('Caractere inválido no texto.');
     if (strlen($expected) > 200) throw new InvalidArgumentException('O texto esperado pode ter até 200 caracteres.');
     return ['name'=>$name,'url'=>$url,'interval_seconds'=>$interval,'slow_ms'=>$slow,'expected_text'=>$expected];
 }
 
 function publicIpv4(string $ip): bool
 {
-    return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)
-        && (int)explode('.', $ip)[0] < 224
-        && !str_starts_with($ip, '169.254.') && !str_starts_with($ip, '100.64.')
-        && !(ip2long($ip) >= ip2long('100.64.0.0') && ip2long($ip) <= ip2long('100.127.255.255'));
+    if (!filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) return false;
+    $number = ip2long($ip);
+    // Conservative exclusions: special-purpose, documentation, benchmark and multicast networks.
+    foreach ([['0.0.0.0',8], ['100.64.0.0',10], ['169.254.0.0',16], ['192.0.0.0',24], ['192.0.2.0',24], ['192.88.99.0',24], ['198.18.0.0',15], ['198.51.100.0',24], ['203.0.113.0',24], ['224.0.0.0',3]] as [$network, $bits]) {
+        $mask = -1 << (32 - $bits);
+        if (($number & $mask) === (ip2long($network) & $mask)) return false;
+    }
+    return true;
 }
 
 function checkUrl(array $monitor): array
