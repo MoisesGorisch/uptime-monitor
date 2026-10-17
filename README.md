@@ -1,0 +1,121 @@
+# Pulse — Website & API Monitor
+
+A lightweight uptime monitor built with **PHP, vanilla JavaScript and SQL**. Track HTTP availability, response times and incident recovery from a local dashboard.
+
+Built by [Moisés Gorisch](https://github.com/MoisesGorisch) as a portfolio project connecting IT operations, web development and automation.
+
+![Pulse dashboard with clearly labeled fictional data](docs/dashboard.jpg)
+
+## Features
+
+- Create up to 20 monitors with a URL, check interval, slow-response threshold and optional expected response text.
+- Perform manual checks or run the CLI collector on a schedule.
+- See the latest state, sample-based availability and recent response-time history.
+- Open an incident on failure and close it when the endpoint recovers, including slow but successful responses.
+- Explore a separate, read-only demonstration with fictional data using `?demo=1`.
+- Use SQLite for a zero-setup local database; PDO MySQL configuration is also available.
+- Responsive dashboard in Brazilian Portuguese; project documentation in English.
+
+## Requirements
+
+- PHP 8.2+ with cURL and PDO SQLite (or PDO MySQL).
+- A modern browser.
+- No Composer, npm packages or frontend build step.
+
+## Run on Windows
+
+Open PowerShell in the project directory:
+
+```powershell
+.\Start.ps1
+# Or select your PHP installation:
+.\Start.ps1 -PhpPath 'C:\path\to\php.exe' -Port 8787
+```
+
+Visit **http://127.0.0.1:8787**. The script starts the web server and a collector that checks for due monitors every 15 seconds. Keep the terminal open. A monitor is first checked on the next collector pass; later checks follow its configured interval. Closing the launcher stops automatic checks.
+
+The launcher loads the required extensions independently of the machine's php.ini and does not modify the existing PHP installation. It also recognizes `C:\SFTP\xampp\php\php.exe` when PHP is not on PATH. Use a current supported PHP installation for ongoing use.
+
+### Manual / Linux setup
+
+With the required extensions enabled:
+
+```sh
+php -S 127.0.0.1:8787 -t public
+# In another terminal, run once, or schedule every minute:
+php bin/check.php
+```
+
+Serve **only `public/`**. Never use the repository root as the document root. The database and configuration belong outside the public directory.
+
+## Database
+
+By default, the app creates `var/monitor.sqlite`. Runtime files and `config.local.php` are excluded from Git.
+
+For MySQL, create an empty database, copy `config.example.php` to `config.local.php`, then configure:
+
+```php
+<?php
+return [
+    'dsn' => 'mysql:host=127.0.0.1;dbname=pulse;charset=utf8mb4',
+    'db_user' => 'your_database_user',
+    'db_password' => 'your_database_password',
+];
+```
+
+Tables are created automatically. Switching database connections does not migrate existing history. The SQLite path is tested locally; MySQL support is provided but has not yet been validated against a running MySQL server.
+
+## Status and availability
+
+| State | Meaning |
+|---|---|
+| Available | HTTP 2xx and optional expected text found, within the latency threshold |
+| Slow | Successful response above the configured threshold |
+| Down | HTTP error, connection/TLS/timeout failure, blocked address, oversized body or missing expected text |
+| Pending | No checks recorded |
+
+Availability is the proportion of successful samples in the last 24 hours; slow responses count as available. It is **not time-weighted uptime or an SLA measurement**. Summary availability averages each sampled monitor's percentage. The dashboard renders up to 100 recent samples per monitor; availability uses all samples in the 24-hour window. The collector retains checks for 90 days. Incidents remain until the database is managed manually.
+
+## Network and security boundaries
+
+- This MVP is a **local administration application**, not a publicly exposed multi-user service. The API accepts loopback connections and localhost Host headers only. Do not put it behind a public reverse proxy without adding authentication and enforcing access controls.
+- Mutations require a session-bound CSRF token. Monitor names and response messages are rendered as text, never HTML.
+- Only public IPv4 HTTP/HTTPS endpoints on ports 80/443 are checked. Internal, loopback, link-local, shared-address and multicast destinations are rejected.
+- Hostnames are resolved before connecting and pinned with cURL's `CURLOPT_RESOLVE`; proxies and redirects are disabled. Use the final URL rather than a redirecting address.
+- Requests verify TLS, time out after 10 seconds and stop after 1 MB of response body. IPv6-only targets are not supported yet.
+- On Windows, supported cURL builds use the native Windows certificate store; Linux relies on its configured CA bundle. Certificate verification is never disabled.
+- Requests do not carry credentials, custom headers or POST bodies. Query strings are stored with the URL; do not enter secrets in URLs.
+- Shared file locking prevents concurrent collectors/manual checks. Checks run sequentially, so many slow endpoints can delay later checks.
+- The optional Google Fonts stylesheet requests fonts from Google; system-font fallbacks keep the dashboard usable offline.
+
+## Verification
+
+```sh
+php tests/run.php
+node --check public/app.js
+```
+
+Tests use a disposable in-memory database and cover URL/address rejection, incident deduplication, recovery and availability calculation. The demo never inserts fictional records into the real database.
+
+## Structure
+
+```text
+public/          Browser dashboard and local JSON API
+src/             Persistence, validation and HTTP checking
+bin/check.php    Scheduled CLI collector
+tests/           Core regression tests
+var/             Ignored local database and lock
+docs/            Portfolio screenshots
+```
+
+## Roadmap
+
+- Authenticated remote administration and a separate public status page.
+- Edit, pause and archive monitors.
+- Email/webhook alerts with retry handling.
+- MySQL integration tests and database migrations.
+- Internationalization and configurable incident confirmation thresholds.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
