@@ -948,3 +948,5 @@ form>.primary {
 
 .language-label{flex-shrink:0}.language-label select{max-width:150px;font:inherit;padding:6px 8px}
 @media(max-width:700px){.app-header{flex-wrap:wrap}.language-label select{max-width:125px}}
+
+.management-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}.danger{color:#bb4545;border-color:#b46c6c}.status.paused{color:var(--muted,#8793a1)}.status.paused:before{background:currentColor}#delete-error{color:#c35f5f}#delete-name{font-weight:600;overflow-wrap:anywhere}
