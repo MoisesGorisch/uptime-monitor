@@ -15,6 +15,8 @@ switch ($path) {
         header('Content-Type: text/css; charset=utf-8'); readfile(__DIR__.'/public/style.css'); break;
     case '/app.js':
         header('Content-Type: application/javascript; charset=utf-8'); readfile(__DIR__.'/public/app.js'); break;
+    case '/theme.js':
+        header('Content-Type: application/javascript; charset=utf-8'); readfile(__DIR__.'/public/theme.js'); break;
     case '/api.php': require __DIR__.'/public/api.php'; break;
     default: http_response_code(404); header('Content-Type: text/plain; charset=utf-8'); echo 'Not found';
 }
