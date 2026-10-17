@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once __DIR__.'/i18n.php';
 
 function authDirectory(): string
 {
@@ -48,7 +49,7 @@ function requireNetwork(): void
     if (!networkAllowed($_SERVER['REMOTE_ADDR'] ?? '', $_SERVER['HTTP_HOST'] ?? '', getenv('PULSE_ALLOW_LAN') === '1')) {
         http_response_code(403);
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode(['error'=>'Acesso de rede não permitido. O padrão é somente este computador.']);
+        echo json_encode(['error'=>pulseMessage('Acesso de rede não permitido. O padrão é somente este computador.')]);
         exit;
     }
 }
@@ -84,7 +85,7 @@ function requireAuthentication(): void
 {
     if (!authenticated()) {
         http_response_code(401);
-        echo json_encode(['error'=>'Entre na sua conta para acessar o painel.']);
+        echo json_encode(['error'=>pulseMessage('Entre na sua conta para acessar o painel.')]);
         exit;
     }
     // Automatic polling must not extend the idle session indefinitely.
