@@ -26,6 +26,10 @@ switch ($path) {
         header('Content-Type: text/css; charset=utf-8'); readfile(__DIR__.'/public/style.css'); break;
     case '/app.js':
         header('Content-Type: application/javascript; charset=utf-8'); readfile(__DIR__.'/public/app.js'); break;
+    case '/messages.js':
+        header('Content-Type: application/javascript; charset=utf-8'); echo 'window.PULSE_MESSAGES = '.file_get_contents(__DIR__.'/src/locales.json').';'; break;
+    case '/i18n.js':
+        header('Content-Type: application/javascript; charset=utf-8'); readfile(__DIR__.'/public/i18n.js'); break;
     case '/theme.js':
         header('Content-Type: application/javascript; charset=utf-8'); readfile(__DIR__.'/public/theme.js'); break;
     case '/api.php': require __DIR__.'/public/api.php'; break;
