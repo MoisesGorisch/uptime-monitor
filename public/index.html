@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light">
+  <meta name="color-scheme" content="light dark">
   <title>Pulse — Monitoramento</title>
+  <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
 </head>
@@ -14,6 +15,7 @@
     <a class="brand" href="./" aria-label="Pulse, início"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12h5l3-7 5 14 3-7h6"/></svg>Pulse</a>
     <nav aria-label="Principal"><a href="#overview" aria-current="page">Monitores</a><a href="#incidents">Incidentes</a></nav>
     <span class="environment">Ambiente local</span>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">Modo escuro</button>
   </header>
   <main id="overview">
     <div class="page-heading">
