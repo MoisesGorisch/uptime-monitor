@@ -1,12 +1,16 @@
 # Pulse — Website & API Monitor
 
-A lightweight uptime monitor built with **PHP, vanilla JavaScript and SQL**. Track HTTP availability, response times and incident recovery from a local dashboard.
+A local-first uptime monitor built with **PHP, vanilla JavaScript and SQL**. Track HTTP availability, response times and incident recovery through an authenticated dashboard, with optional private-LAN access.
 
 Built by [Moisés Gorisch](https://github.com/MoisesGorisch) as a portfolio project connecting IT operations, web development and automation.
 
 ![Pulse dashboard with clearly labeled fictional data](docs/dashboard.jpg)
 
 ## Features
+
+- Mandatory administrator login for real monitoring data, with first-use setup on the server computer and no default password.
+- Server-side sessions, logout, expiration and persistent login-attempt throttling.
+- Loopback-only access by default; explicit `-Lan` option for private IPv4 networks.
 
 - Create up to 20 monitors with a URL, check interval, slow-response threshold and optional expected response text.
 - Perform manual checks or run the CLI collector on a schedule.
@@ -37,6 +41,20 @@ Open PowerShell in the project directory:
 ```
 
 Visit **http://127.0.0.1:8787**. The script starts the web server and a collector that checks for due monitors every 15 seconds. Keep the terminal open. A monitor is first checked on the next collector pass; later checks follow its configured interval. Closing the launcher stops automatic checks.
+
+On the first visit, create an administrator username and password **on the server computer**. Passwords must contain 12–72 bytes and are stored only as salted password hashes. Once configured, sign in to access real data. The fictional demonstration stays available without login and never reads the real monitoring API.
+
+Signing out or closing the browser does not stop the collector. Sessions expire after 30 minutes without an authenticated action and always after 8 hours; automatic dashboard polling does not extend the session.
+
+### Optional private-LAN access
+
+```powershell
+.\Start.ps1 -Lan
+```
+
+This binds the server to `0.0.0.0:8787` and enables private IPv4 clients (`10/8`, `172.16/12`, `192.168/16`). Users must separately allow inbound TCP 8787 through their firewall if needed; the script does not change firewall rules. Connect using `http://<server-private-ip>:8787`. Arbitrary DNS hostnames, forwarded headers and public client IPs are not accepted. Local-only mode remains the default every time `-Lan` is omitted.
+
+Authentication is still mandatory in LAN mode. Finish the first-use setup locally before using another computer. HTTP does not encrypt passwords or cookies: use this option only on a trusted LAN. For encrypted access, configure HTTPS with a trusted certificate; this project does not set up TLS, router port forwarding or internet hosting.
 
 The launcher loads the required extensions independently of the machine's php.ini and does not modify the existing PHP installation. It prefers a portable PHP at `.runtime/php/php.exe`, then PHP on PATH, then `C:\SFTP\xampp\php\php.exe`. The portable runtime is ignored by Git and is not distributed with this repository. Download a current supported Windows build from [PHP](https://www.php.net/downloads.php), verify its published SHA-256 and extract it into `.runtime/php/`, or pass `-PhpPath` to your maintained installation.
 
@@ -82,7 +100,9 @@ Availability is the proportion of successful samples in the last 24 hours; slow 
 
 ## Network and security boundaries
 
-- This MVP is a **local administration application**, not a publicly exposed multi-user service. The API accepts loopback connections and localhost Host headers only. Do not put it behind a public reverse proxy without adding authentication and enforcing access controls.
+- This is a **local/private-LAN administration application**, not a publicly exposed multi-user service. Source IP and Host restrictions are enforced before application routing. Do not expose it through a public reverse proxy, which could make remote requests look local.
+- A single administrator account is stored in ignored `var/auth.sqlite`. The API requires a valid authenticated session; successful login regenerates the session ID and CSRF token. Sessions expire after 30 minutes without authenticated actions or 8 hours total.
+- Failed logins are counted in SQLite, independent of cookies: 10 failures per IP or 30 globally within a rolling 15-minute window block further attempts. This can temporarily block legitimate access too. There is no email password recovery; protect the local authentication database and keep a backup.
 - Mutations require a session-bound CSRF token. Monitor names and response messages are rendered as text, never HTML.
 - JSON bodies are capped at 8 KB, text fields reject structured values, and mutation requests enforce their origin and content type.
 - The local router serves an explicit list of public routes with a restrictive Content Security Policy, framing restrictions and privacy headers. Use `Start.ps1` or the documented router command; production servers require equivalent configuration.
@@ -102,10 +122,11 @@ Read the scoped [security review and remaining limitations](docs/security-review
 php tests/run.php
 node --check public/app.js
 # PowerShell: with the local app running
+php tests/auth.php
 .\tests\http.ps1
 ```
 
-Core tests use a disposable in-memory database and cover URL/address rejection, malformed field types, incident deduplication, recovery, scheduling and availability calculation. The HTTP regression script makes no data changes and covers request rejection, private-route protection and response headers. The demo never inserts fictional records into the real database.
+Core tests use a disposable in-memory database. Authentication tests use a random disposable account and cover network policy, session rotation/expiry and throttling. The HTTP regression script starts its own loopback server on a free port, uses an isolated temporary authentication database, tests setup/login/logout and API protection, then stops the server and removes its fixtures. It does not create or change the real administrator account or monitoring data.
 
 ## Structure
 
@@ -120,7 +141,7 @@ docs/            Portfolio screenshots
 
 ## Roadmap
 
-- Authenticated remote administration and a separate public status page.
+- A separate read-only status page and optional TLS deployment documentation.
 - Edit, pause and archive monitors.
 - Email/webhook alerts with retry handling.
 - MySQL integration tests and database migrations.
