@@ -1,6 +1,8 @@
 'use strict';
 
 (() => {
+  const t=window.PulseI18n.t;
+  window.addEventListener('pulse:languagechange',()=>apply(document.documentElement.dataset.theme));
   const key = 'pulse-theme';
   const system = window.matchMedia('(prefers-color-scheme: dark)');
   let preference = null;
@@ -12,7 +14,7 @@
     const button = document.querySelector('#theme-toggle');
     if (button) {
       button.setAttribute('aria-pressed', String(theme === 'dark'));
-      button.title = theme === 'dark' ? 'Mudar para o tema claro' : 'Mudar para o tema escuro';
+      button.title = theme === 'dark' ? t('Mudar para o tema claro') : t('Mudar para o tema escuro');
     }
   }
 
