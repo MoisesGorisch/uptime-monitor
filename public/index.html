@@ -5,6 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>Pulse — Monitoramento</title>
+  <script src="messages.js"></script><script src="i18n.js"></script><script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#overview">Ir ao conteúdo</a>
+  <header class="app-header">
+    <a class="brand" href="./" aria-label="Pulse, início"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 12h5l3-7 5 14 3-7h6"/></svg>Pulse</a>
+    <nav aria-label="Principal"><a href="#overview" aria-current="page">Monitores</a><a href="#incidents">Incidentes</a></nav>
+    <span class="environment">Ambiente local</span>
+    <label class="language-label"><span class="sr-only">Idioma</span><select id="language" aria-label="Idioma"><option value="en">English</option><option value="pt-BR">Português (Brasil)</option><option value="es">Español</option><option value="ja">日本語</option><option value="zh-CN">简体中文</option><option value="ru">Русский</option></select></label><button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">Modo escuro</button>
+    <button type="button" id="logout" hidden>Sair</button>
+  </header>
+  <main id="overview">
+    <div class="page-heading">
+      <div><h1>Monitoramento</h1><p>Estado dos serviços e histórico de verificações.</p></div>
+      <div class="heading-actions"><a href="?demo=1" id="demo-link">Demonstração</a><button class="primary" id="new-monitor">Adicionar monitor</button></div>
+    </div>
+    <div class="notice" id="notice" role="alert" hidden></div>
+    <div class="demo-banner" id="demo-banner" hidden><div><strong>Ambiente de demonstração</strong><span>Dados fictícios. Nenhum serviço desta lista está sendo consultado.</span></div><a href="./">Sair da demonstração</a></div>
+    <section class="stats" aria-label="Resumo das verificações">
+      <article><span>Monitores</span><strong id="total">0</strong><small>Cadastrados</small></article>
+      <article><span>Saudáveis</span><strong id="available">0</strong><small>Resposta recente dentro do limite</small></article>
+      <article><span>Precisam de atenção</span><strong id="attention">0</strong><small>Falha, lentidão ou dados desatualizados</small></article>
+      <article><span>Disponibilidade em 24h</span><strong id="uptime">—</strong><small>Média por serviço com amostras</small></article>
+    </section>
+    <section class="services" aria-labelledby="monitor-heading">
+      <div class="section-heading"><h2 id="monitor-heading">Monitores <span class="count" id="monitor-count">0</span></h2><div class="filters"><label class="sr-only" for="status-filter">Filtrar por estado</label><select id="status-filter"><option value="all">Todos os estados</option><option value="attention">Com atenção</option><option value="up">Saudáveis</option><option value="pending">Sem verificação</option></select><label class="sr-only" for="search">Buscar monitores</label><input id="search" type="search" placeholder="Buscar por nome ou endereço"></div></div>
+      <div class="monitor-table"><div class="table-head" aria-hidden="true"><span>Serviço</span><span>Estado</span><span>Resposta</span><span>Disponibilidade · 24h</span><span>Última verificação</span><span>Ações</span></div><div id="monitors"></div><div class="empty" id="empty" hidden><h3>Nenhum monitor cadastrado</h3><p>Adicione um site ou API para começar a registrar as verificações.</p><button id="empty-add">Adicionar primeiro monitor</button></div></div>
+      <p class="footnote">Disponibilidade calculada por amostras. Uma resposta antiga não confirma o estado atual do serviço.</p>
+    </section>
+    <section id="incidents" aria-labelledby="incident-heading"><div class="section-heading"><h2 id="incident-heading">Incidentes</h2><span class="subtle">Últimos 30 registros</span></div><div class="incident-list" id="incident-list"></div></section>
+    <footer><span>Pulse <span class="separator">/</span> Monitor de sites e APIs</span><span id="updated" aria-live="polite">Aguardando dados</span></footer>
+  </main>
+  <dialog id="monitor-dialog" aria-labelledby="dialog-title"><form id="monitor-form">
+    <div class="dialog-heading"><h2 id="dialog-title">Adicionar monitor</h2><button type="button" id="close-dialog" aria-label="Fechar">×</button></div>
+    <p>Informe a URL final de um serviço público HTTP ou HTTPS.</p>
+    <label>Nome<input name="name" required maxlength="80" placeholder="Ex.: API de pedidos"></label>
+    <label>URL<input name="url" type="url" required maxlength="2048" placeholder="https://example.com/health" aria-describedby="url-help"></label><p id="url-help" class="form-help">Não inclua senhas ou tokens no endereço.</p>
+    <div class="form-row"><label>Intervalo<select name="interval_seconds"><option value="60">1 minuto</option><option value="300" selected>5 minutos</option><option value="900">15 minutos</option><option value="3600">1 hora</option></select></label><label>Limite de resposta (ms)<input name="slow_ms" type="number" min="100" max="10000" value="1500" required></label></div>
+    <label>Texto esperado <span class="subtle">(opcional)</span><input name="expected_text" maxlength="200" placeholder="Ex.: ok"></label>
+    <p class="form-help">O coletor precisa estar em execução para realizar verificações automáticas.</p>
+    <p id="form-error" role="alert"></p><button class="primary" id="submit-monitor">Criar monitor</button>
+  </form></dialog>
+</body>
+</html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Pulse — Monitoramento</title>
   <script src="theme.js"></script>
   <link rel="stylesheet" href="style.css">
   <script src="app.js" defer></script>
