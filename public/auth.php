@@ -28,6 +28,6 @@ try {
 } catch (DomainException $e) {
     http_response_code($e->getCode());
     if ($e->getCode()===429) header('Retry-After: 900');
-    echo json_encode(['error'=>$e->getMessage()]);
-} catch (InvalidArgumentException|JsonException $e) { http_response_code(422); echo json_encode(['error'=>$e->getMessage()]); }
-catch (Throwable $e) { error_log(get_class($e).': authentication failure'); http_response_code(500); echo json_encode(['error'=>'Não foi possível acessar a autenticação. Verifique a configuração do servidor.']); }
+    echo json_encode(['error'=>pulseMessage($e instanceof JsonException ? 'Envie um objeto JSON válido.' : $e->getMessage())]);
+} catch (InvalidArgumentException|JsonException $e) { http_response_code(422); echo json_encode(['error'=>pulseMessage($e instanceof JsonException ? 'Envie um objeto JSON válido.' : $e->getMessage())]); }
+catch (Throwable $e) { error_log(get_class($e).': authentication failure'); http_response_code(500); echo json_encode(['error'=>pulseMessage('Não foi possível acessar a autenticação. Verifique a configuração do servidor.')]); }
