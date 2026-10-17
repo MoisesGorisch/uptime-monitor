@@ -4,11 +4,13 @@ window.PulseI18n.init();
 
 const $ = selector => document.querySelector(selector);
 const demo = new URLSearchParams(location.search).get('demo') === '1';
-let labels = {up: t('Saudável'), slow: t('Lento'), down: t('Indisponível'), pending: t('Sem verificação'), stale: t('Desatualizado')};
+let labels = {up: t('Saudável'), slow: t('Lento'), down: t('Indisponível'), pending: t('Sem verificação'), stale: t('Desatualizado'), paused:t('Pausado')};
 const expanded = new Set();
 let state = {monitors: [], incidents: []};
 let csrf = '';
 let checking = false;
+let editing=null, deleting=null;
+let managing=false;
 
 function date(timestamp) {
   return timestamp ? new Date(timestamp * 1000).toLocaleString(window.PulseI18n.locale, {
@@ -24,7 +26,8 @@ function element(tag, className, text) {
 }
 
 function currentStatus(monitor) {
-  if (!monitor.latest) return 'pending';
+  if (Number(monitor.paused)) return 'paused';
+  if (!monitor.latest || (!demo && monitor.last_checked === null)) return 'pending';
   const age = Math.floor(Date.now() / 1000) - Number(monitor.latest.checked_at);
   return age > Math.max(60, Number(monitor.interval_seconds) * 2) ? 'stale' : monitor.latest.status;
 }
@@ -72,7 +75,7 @@ async function request(payload) {
 
 function render() {
   const monitors = state.monitors;
-  const sampled = monitors.filter(m => m.uptime !== null);
+  const sampled = monitors.filter(m => m.uptime !== null && !Number(m.paused));
   const attention = m => ['slow', 'down', 'stale'].includes(currentStatus(m));
   $('#total').textContent = monitors.length;
   $('#monitor-count').textContent = monitors.length;
@@ -119,7 +122,7 @@ function monitorRow(monitor) {
   const actions = element('div', 'row-actions');
   const check = element('button', '', t('Verificar'));
   check.type = 'button';
-  check.disabled = demo || checking;
+  check.disabled = demo || checking || managing || status === 'paused';
   check.setAttribute('aria-label', t('Verificar ') + monitor.name);
   check.addEventListener('click', async () => {
     checking = true;
@@ -154,8 +157,22 @@ function detailPanel(monitor, status) {
   meta.append(element('span', '', t('Intervalo: ') + window.PulseI18n.number(Number(monitor.interval_seconds) / 60) + ' ' + t('min')),
     element('span', '', t('Limite de resposta: ') + window.PulseI18n.number(monitor.slow_ms) + ' ' + t('ms')),
     element('span', '', monitor.latest ? 'HTTP: ' + (monitor.latest.http_code || t('sem resposta')) : t('Nenhuma resposta registrada')));
-  panel.append(meta);
-  const message = status === 'stale'
+  const controls=element('div','management-actions');
+  for(const [label,action] of [[t('Editar'),'edit'],[Number(monitor.paused)?t('Retomar'):t('Pausar'),Number(monitor.paused)?'resume':'pause'],[t('Excluir'),'delete']]) {
+    const button=element('button',action==='delete'?'danger':'',label);
+    button.type='button'; button.disabled=demo || checking || managing;
+    button.addEventListener('click',async()=>{
+      if(action==='edit'){openForm(monitor);return;}
+      if(action==='delete'){openDelete(monitor);return;}
+      managing=true; render();
+      try {await request({action,id:monitor.id});await load();}
+      catch(error){showError(error.message);}
+      finally{managing=false;render();}
+    });
+    controls.append(button);
+  }
+  panel.append(controls,meta);
+  const message = status === 'paused' ? t('Monitor pausado. O histórico foi preservado; nenhuma verificação será executada até a retomada.') : status === 'pending' ? t('Aguardando a primeira verificação.') : status === 'stale'
     ? t('Verificação desatualizada. Confirme se o coletor está em execução; o estado atual do serviço é desconhecido.')
     : t(monitor.latest?.detail || '') || t('Aguardando a primeira verificação.');
   panel.append(element('p', 'detail-message', t(message)));
@@ -214,13 +231,41 @@ async function load() {
   try { state = await request(); csrf = state.csrf; $('#notice').hidden = true; render(); }
   catch (error) { showError(error.message); }
 }
-function openForm() {
-  if (demo) return;
-  $('#form-error').textContent = '';
-  $('#monitor-dialog').showModal();
+function formTitles() {
+  $('#dialog-title').textContent=t(editing?'Editar monitor':'Adicionar monitor');
+  $('#submit-monitor').textContent=t(editing?'Salvar alterações':'Criar monitor');
 }
-$('#new-monitor').addEventListener('click', openForm);
-$('#empty-add').addEventListener('click', openForm);
+function openForm(monitor=null) {
+  if(demo || managing || checking)return;
+  editing=monitor;
+  const form=$('#monitor-form'); for(const option of form.querySelectorAll('option[data-custom]')) option.remove(); form.reset();
+  // Values come from saved configuration, never from translated text.
+  if(monitor) for(const field of ['name','url','interval_seconds','slow_ms','expected_text']) {
+    const control=form.elements.namedItem(field);
+    if(control.tagName==='SELECT' && !Array.from(control.options).some(o=>o.value===String(monitor[field]))) {
+      const option=element('option','',String(monitor[field])+' s');option.value=String(monitor[field]);option.dataset.custom='true';control.append(option);
+    }
+    control.value=monitor[field];
+  }
+  formTitles(); $('#form-error').textContent='';$('#monitor-dialog').showModal();
+}
+function openDelete(monitor) {
+  deleting=monitor;$('#delete-form').reset();$('#delete-error').textContent='';
+  $('#delete-name').textContent=monitor.name;$('#delete-dialog').showModal();
+}
+$('#close-delete').addEventListener('click',()=>$('#delete-dialog').close());
+$('#cancel-delete').addEventListener('click',()=>$('#delete-dialog').close());
+$('#delete-form').addEventListener('submit',async event=>{
+  event.preventDefault();if(!deleting || managing)return;
+  const confirmation=$('#delete-confirmation').value;
+  if(confirmation!==deleting.name){$('#delete-error').textContent=t('Confirme o nome do monitor para excluir.');return;}
+  managing=true;$('#submit-delete').disabled=true;
+  try{await request({action:'delete',id:deleting.id,confirmation});expanded.delete(deleting.id);$('#delete-dialog').close();deleting=null;await load();}
+  catch(error){$('#delete-error').textContent=error.message;}
+  finally{managing=false;$('#submit-delete').disabled=false;render();}
+});
+$('#new-monitor').addEventListener('click', () => openForm());
+$('#empty-add').addEventListener('click', () => openForm());
 $('#close-dialog').addEventListener('click', () => $('#monitor-dialog').close());
 $('#search').addEventListener('input', render);
 $('#status-filter').addEventListener('change', render);
@@ -228,7 +273,7 @@ $('#monitor-form').addEventListener('submit', async event => {
   event.preventDefault();
   const button = $('#submit-monitor'); button.disabled = true;
   try {
-    await request({action: 'create', ...Object.fromEntries(new FormData(event.target))});
+    await request({...Object.fromEntries(new FormData(event.target)),action:editing?'update':'create',...(editing?{id:editing.id}:{})});
     $('#monitor-dialog').close(); event.target.reset(); await load();
   } catch (error) { $('#form-error').textContent = error.message; }
   finally { button.disabled = false; }
@@ -246,7 +291,7 @@ if (demo) {
     } catch (error) { showError(error.message); }
   });
   load();
-  setInterval(() => { if (!document.hidden && !$('#monitor-dialog').open && !checking) load(); }, 30000);
+  setInterval(() => { if (!document.hidden && !$('#monitor-dialog').open && !$('#delete-dialog').open && !checking && !managing) load(); }, 30000);
 }
 
-window.addEventListener('pulse:languagechange',()=>{labels={up: t('Saudável'), slow: t('Lento'), down: t('Indisponível'), pending: t('Sem verificação'), stale: t('Desatualizado')};if(demo)state=demoData();render();});
+window.addEventListener('pulse:languagechange',()=>{labels={up: t('Saudável'), slow: t('Lento'), down: t('Indisponível'), pending: t('Sem verificação'), stale: t('Desatualizado'), paused:t('Pausado')};if(demo)state=demoData();formTitles();render();});
