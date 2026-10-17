@@ -8,7 +8,7 @@ header('X-Content-Type-Options: nosniff');
 ini_set('display_errors', '0');
 ini_set('session.use_strict_mode', '1');
 requireNetwork();
-if (($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '') === 'cross-site') { http_response_code(403); echo json_encode(['error'=>'Origem não permitida.']); exit; }
+if (($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '') === 'cross-site') { http_response_code(403); echo json_encode(['error'=>pulseMessage('Origem não permitida.')]); exit; }
 authSession();
 requireAuthentication();
 try {
@@ -17,11 +17,11 @@ try {
     if ($_SERVER['REQUEST_METHOD']!=='POST') { header('Allow: GET, POST'); http_response_code(405); exit; }
     $origin = $_SERVER['HTTP_ORIGIN'] ?? null;
     $expectedOrigin = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'];
-    if ($origin !== null && $origin !== $expectedOrigin) { http_response_code(403); echo json_encode(['error'=>'Origem não permitida.']); exit; }
-    if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') { http_response_code(415); echo json_encode(['error'=>'Envie os dados como JSON.']); exit; }
-    if (!hash_equals($_SESSION['csrf'],$_SERVER['HTTP_X_CSRF_TOKEN'] ?? '')) { http_response_code(403); echo json_encode(['error'=>'Atualize a página e tente novamente.']); exit; }
+    if ($origin !== null && $origin !== $expectedOrigin) { http_response_code(403); echo json_encode(['error'=>pulseMessage('Origem não permitida.')]); exit; }
+    if (strtolower(trim(explode(';', $_SERVER['CONTENT_TYPE'] ?? '')[0])) !== 'application/json') { http_response_code(415); echo json_encode(['error'=>pulseMessage('Envie os dados como JSON.')]); exit; }
+    if (!hash_equals($_SESSION['csrf'],$_SERVER['HTTP_X_CSRF_TOKEN'] ?? '')) { http_response_code(403); echo json_encode(['error'=>pulseMessage('Atualize a página e tente novamente.')]); exit; }
     $raw = file_get_contents('php://input', false, null, 0, 8193);
-    if (strlen($raw)>8192) { http_response_code(413); echo json_encode(['error'=>'Solicitação muito grande.']); exit; }
+    if (strlen($raw)>8192) { http_response_code(413); echo json_encode(['error'=>pulseMessage('Solicitação muito grande.')]); exit; }
     $input=json_decode($raw,true,16,JSON_THROW_ON_ERROR);
     if (!is_array($input) || array_is_list($input)) throw new InvalidArgumentException('Envie um objeto JSON válido.');
     if (($input['action'] ?? '')==='create') {
@@ -37,5 +37,5 @@ try {
         try { recordCheck($db,(int)$m['id'],checkUrl($m)); } finally { flock($lock,LOCK_UN); fclose($lock); }
     } else throw new InvalidArgumentException('Ação inválida.');
     echo json_encode(['ok'=>true]);
-} catch (InvalidArgumentException | JsonException $e) { http_response_code(422); echo json_encode(['error'=>$e->getMessage()]); }
-catch (Throwable $e) { error_log((string)$e); http_response_code(500); echo json_encode(['error'=>'Não foi possível concluir. Verifique o banco de dados e as extensões PHP.']); }
+} catch (InvalidArgumentException | JsonException $e) { http_response_code(422); echo json_encode(['error'=>pulseMessage($e instanceof JsonException ? 'Envie um objeto JSON válido.' : $e->getMessage())]); }
+catch (Throwable $e) { error_log((string)$e); http_response_code(500); echo json_encode(['error'=>pulseMessage('Não foi possível concluir. Verifique o banco de dados e as extensões PHP.')]); }
