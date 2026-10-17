@@ -1,4 +1,4 @@
-param([string]$PhpPath = '', [ValidateRange(1024,65535)][int]$Port = 8787)
+param([string]$PhpPath = '', [ValidateRange(1024,65535)][int]$Port = 8787, [switch]$Lan)
 $ErrorActionPreference = 'Stop'
 if (-not $PhpPath) {
     $phpCommand = Get-Command php -ErrorAction SilentlyContinue
@@ -8,6 +8,9 @@ if (-not $PhpPath) {
     else { throw 'PHP 8.2+ is required. Pass -PhpPath with the php.exe location.' }
 }
 $extensionPath = Join-Path (Split-Path $PhpPath) 'ext'
+$oldLan = $env:PULSE_ALLOW_LAN
+$env:PULSE_ALLOW_LAN = if ($Lan) { '1' } else { '0' }
+$bindAddress = if ($Lan) { '0.0.0.0' } else { '127.0.0.1' }
 $sessionPath = Join-Path $PSScriptRoot 'var\sessions'
 New-Item -ItemType Directory -Path $sessionPath -Force | Out-Null
 $errorLog = Join-Path $PSScriptRoot 'var\php.log'
@@ -21,5 +24,6 @@ $worker = Start-Job -ArgumentList $PhpPath,$extensionPath,$PSScriptRoot -ScriptB
 }
 Write-Host "Pulse: http://127.0.0.1:$Port  | Demo: http://127.0.0.1:$Port/?demo=1"
 Write-Host 'Automatic checks enabled. Keep this window open. Press Ctrl+C to stop.'
-try { & $PhpPath @phpOptions -S "127.0.0.1:$Port" -t (Join-Path $PSScriptRoot 'public') (Join-Path $PSScriptRoot 'router.php') }
-finally { Stop-Job $worker; Remove-Job $worker }
+if ($Lan) { Write-Host "LAN enabled: use this computer's private IPv4 address on port $Port. Firewall rules are not changed. Use only a trusted network; HTTP does not encrypt credentials." }
+try { & $PhpPath @phpOptions -S "${bindAddress}:$Port" -t (Join-Path $PSScriptRoot 'public') (Join-Path $PSScriptRoot 'router.php') }
+finally { Stop-Job $worker; Remove-Job $worker; $env:PULSE_ALLOW_LAN = $oldLan }
