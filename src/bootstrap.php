@@ -7,14 +7,70 @@ function db(): PDO
     if ($db) return $db;
     $root = dirname(__DIR__);
     $config = is_file($root . '/config.local.php') ? require $root . '/config.local.php' : [];
-    $db = new PDO($config['dsn'] ?? 'sqlite:' . $root . '/var/monitor.sqlite', $config['db_user'] ?? null, $config['db_password'] ?? null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
+    $db = new PDO($config['dsn'] ?? 'sqlite:' . (getenv('PULSE_DATA_DIR') ?: $root . '/var') . '/monitor.sqlite', $config['db_user'] ?? null, $config['db_password'] ?? null, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
     $sqlite = $db->getAttribute(PDO::ATTR_DRIVER_NAME) === 'sqlite';
     if ($sqlite) { $db->exec('PRAGMA foreign_keys=ON'); $db->exec('PRAGMA busy_timeout=5000'); }
     $id = $sqlite ? 'INTEGER PRIMARY KEY AUTOINCREMENT' : 'INTEGER PRIMARY KEY AUTO_INCREMENT';
     $db->exec("CREATE TABLE IF NOT EXISTS monitors (id $id, name VARCHAR(80) NOT NULL, url VARCHAR(2048) NOT NULL, interval_seconds INTEGER NOT NULL, slow_ms INTEGER NOT NULL, expected_text VARCHAR(200) NOT NULL DEFAULT '', last_checked INTEGER NULL)");
     $db->exec("CREATE TABLE IF NOT EXISTS checks (id $id, monitor_id INTEGER NOT NULL, checked_at INTEGER NOT NULL, status VARCHAR(12) NOT NULL, http_code INTEGER NOT NULL, latency_ms INTEGER NOT NULL, detail VARCHAR(255) NOT NULL, FOREIGN KEY(monitor_id) REFERENCES monitors(id) ON DELETE CASCADE)");
     $db->exec("CREATE TABLE IF NOT EXISTS incidents (id $id, monitor_id INTEGER NOT NULL, opened_at INTEGER NOT NULL, closed_at INTEGER NULL, detail VARCHAR(255) NOT NULL, FOREIGN KEY(monitor_id) REFERENCES monitors(id) ON DELETE CASCADE)");
+    ensureMonitorSchema($db);
     return $db;
+}
+
+// Existing installations retain all data; migrate the single new state column in place.
+function ensureMonitorSchema(PDO $db): void
+{
+    $columns = static function () use ($db): array {
+        return $db->getAttribute(PDO::ATTR_DRIVER_NAME) === 'sqlite'
+            ? array_column($db->query('PRAGMA table_info(monitors)')->fetchAll(PDO::FETCH_ASSOC), 'name')
+            : array_column($db->query('SHOW COLUMNS FROM monitors')->fetchAll(PDO::FETCH_ASSOC), 'Field');
+    };
+    if (!in_array('paused', $columns(), true)) {
+        try { $db->exec('ALTER TABLE monitors ADD COLUMN paused INTEGER NOT NULL DEFAULT 0'); }
+        catch (PDOException $e) { if (!in_array('paused', $columns(), true)) throw $e; }
+    }
+}
+
+function monitorLock()
+{
+    $directory = getenv('PULSE_DATA_DIR') ?: dirname(__DIR__).'/var';
+    $lock = fopen($directory.'/worker.lock', 'c');
+    if (!$lock || !flock($lock, LOCK_EX | LOCK_NB)) {
+        if ($lock) fclose($lock);
+        throw new InvalidArgumentException('Há uma verificação em andamento. Tente novamente.');
+    }
+    return $lock;
+}
+
+function manageMonitor(PDO $db, array $input): void
+{
+    $id = filter_var($input['id'] ?? null, FILTER_VALIDATE_INT, ['options'=>['min_range'=>1]]);
+    if ($id === false || $id === null) throw new InvalidArgumentException('Monitor não encontrado.');
+    $query = $db->prepare('SELECT * FROM monitors WHERE id=?'); $query->execute([$id]);
+    $monitor = $query->fetch();
+    if (!$monitor) throw new InvalidArgumentException('Monitor não encontrado.');
+    switch ($input['action']) {
+        case 'update':
+            $fields = validateMonitor($input);
+            $db->prepare('UPDATE monitors SET name=?,url=?,interval_seconds=?,slow_ms=?,expected_text=?,last_checked=NULL WHERE id=?')->execute([...array_values($fields),$id]);
+            break;
+        case 'pause': case 'resume':
+            $db->prepare('UPDATE monitors SET paused=?,last_checked=NULL WHERE id=?')->execute([$input['action']==='pause' ? 1 : 0,$id]);
+            break;
+        case 'delete':
+            if (($input['confirmation'] ?? null) !== $monitor['name']) throw new InvalidArgumentException('Confirme o nome do monitor para excluir.');
+            $db->beginTransaction();
+            try {
+                // Explicit removal also works with schemas created without cascading foreign keys.
+                $db->prepare('DELETE FROM checks WHERE monitor_id=?')->execute([$id]);
+                $db->prepare('DELETE FROM incidents WHERE monitor_id=?')->execute([$id]);
+                $db->prepare('DELETE FROM monitors WHERE id=?')->execute([$id]);
+                $db->commit();
+            } catch (Throwable $e) { $db->rollBack(); throw $e; }
+            break;
+        default: throw new InvalidArgumentException('Ação inválida.');
+    }
 }
 
 function validateMonitor(array $input): array
@@ -82,7 +138,7 @@ function checkUrl(array $monitor): array
 
 function dueMonitors(PDO $db, ?int $now = null): array
 {
-    $query = $db->prepare('SELECT * FROM monitors WHERE last_checked IS NULL OR last_checked + interval_seconds <= ?');
+    $query = $db->prepare('SELECT * FROM monitors WHERE paused=0 AND (last_checked IS NULL OR last_checked + interval_seconds <= ?)');
     // SQLite expressions have no column affinity: bind an integer, not PDO's default string.
     $query->bindValue(1, $now ?? time(), PDO::PARAM_INT);
     $query->execute();
