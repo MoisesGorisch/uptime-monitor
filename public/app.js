@@ -63,6 +63,7 @@ async function request(payload) {
     body: JSON.stringify(payload)
   } : {});
   const result = await response.json();
+  if (response.status === 401) { location.assign('/login'); throw new Error('Sua sessão expirou. Entre novamente.'); }
   if (!response.ok) throw new Error(result.error || 'Não foi possível acessar o serviço.');
   return result;
 }
@@ -234,6 +235,14 @@ if (demo) {
   state = demoData(); $('#demo-banner').hidden = false; $('#demo-link').hidden = true;
   $('#new-monitor').disabled = true; render();
 } else {
+  $('#logout').hidden = false;
+  $('#logout').addEventListener('click', async () => {
+    try {
+      const response = await fetch('auth.php', {method:'POST',headers:{'Content-Type':'application/json','X-CSRF-Token':csrf},body:JSON.stringify({action:'logout'})});
+      if (!response.ok) throw new Error('Não foi possível sair. Atualize a página e tente novamente.');
+      location.assign('/login');
+    } catch (error) { showError(error.message); }
+  });
   load();
   setInterval(() => { if (!document.hidden && !$('#monitor-dialog').open && !checking) load(); }, 30000);
 }
