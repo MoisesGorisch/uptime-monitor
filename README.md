@@ -4,7 +4,7 @@ A local-first uptime monitor built with **PHP, vanilla JavaScript and SQL**. Tra
 
 Built by [Moisés Gorisch](https://github.com/MoisesGorisch) as a portfolio project connecting IT operations, web development and automation.
 
-![Pulse dashboard with clearly labeled fictional data](docs/dashboard.jpg)
+![Pulse dashboard with clearly labeled fictional data](https://raw.githubusercontent.com/MoisesGorisch/uptime-monitor/798432339271cfff08b7796d9ccaf82f68bc3110/docs/dashboard.jpg)
 
 ## Features
 
