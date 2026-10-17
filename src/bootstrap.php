@@ -65,6 +65,15 @@ function checkUrl(array $monitor): array
     return ['status'=>$status,'http_code'=>$code,'latency_ms'=>$ms,'detail'=>$detail];
 }
 
+function dueMonitors(PDO $db, ?int $now = null): array
+{
+    $query = $db->prepare('SELECT * FROM monitors WHERE last_checked IS NULL OR last_checked + interval_seconds <= ?');
+    // SQLite expressions have no column affinity: bind an integer, not PDO's default string.
+    $query->bindValue(1, $now ?? time(), PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetchAll();
+}
+
 function recordCheck(PDO $db, int $id, array $result, ?int $now = null): void
 {
     $now ??= time();
