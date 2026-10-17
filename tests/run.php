@@ -18,4 +18,6 @@ $result=['status'=>'down','http_code'=>503,'latency_ms'=>50,'detail'=>'Unavailab
 expect((int)$db->query('SELECT COUNT(*) FROM incidents')->fetchColumn()===1,'Repeated failure opens only one incident');
 $result['status']='slow';recordCheck($db,1,$result,$now);expect((int)$db->query('SELECT closed_at FROM incidents')->fetchColumn()===$now,'Available but slow closes downtime');
 $data=snapshot($db);expect($data['monitors'][0]['uptime']===33.33,'Availability calculated from samples');expect(count($data['monitors'][0]['history'])===3,'History persisted');
+expect(count(dueMonitors($db,$now+299))===0,'Collector waits for configured interval');
+expect(count(dueMonitors($db,$now+300))===1,'Collector selects monitor when due');
 echo "$passed assertions passed.\n";
