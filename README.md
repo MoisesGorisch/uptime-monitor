@@ -146,7 +146,7 @@ docs/            Portfolio screenshots
 - Edit, pause and archive monitors.
 - Email/webhook alerts with retry handling.
 - MySQL integration tests and database migrations.
-- Internationalization and configurable incident confirmation thresholds.
+- Configurable incident confirmation thresholds.
 
 ## License
 
