@@ -1,0 +1,1250 @@
+{
+  "Ir ao conteúdo": {
+    "pt-BR": "Ir ao conteúdo",
+    "en": "Skip to content",
+    "es": "Ir al contenido",
+    "ja": "本文へスキップ",
+    "zh-CN": "跳转到内容",
+    "ru": "Перейти к содержимому"
+  },
+  "Pulse, início": {
+    "pt-BR": "Pulse, início",
+    "en": "Pulse home",
+    "es": "Inicio de Pulse",
+    "ja": "Pulse ホーム",
+    "zh-CN": "Pulse 首页",
+    "ru": "Главная Pulse"
+  },
+  "Principal": {
+    "pt-BR": "Principal",
+    "en": "Main navigation",
+    "es": "Navegación principal",
+    "ja": "メインナビゲーション",
+    "zh-CN": "主导航",
+    "ru": "Главная навигация"
+  },
+  "Monitores": {
+    "pt-BR": "Monitores",
+    "en": "Monitors",
+    "es": "Monitores",
+    "ja": "監視対象",
+    "zh-CN": "监控项",
+    "ru": "Мониторы"
+  },
+  "Incidentes": {
+    "pt-BR": "Incidentes",
+    "en": "Incidents",
+    "es": "Incidentes",
+    "ja": "インシデント",
+    "zh-CN": "故障事件",
+    "ru": "Инциденты"
+  },
+  "Ambiente local": {
+    "pt-BR": "Ambiente local",
+    "en": "Local environment",
+    "es": "Entorno local",
+    "ja": "ローカル環境",
+    "zh-CN": "本地环境",
+    "ru": "Локальная среда"
+  },
+  "Modo escuro": {
+    "pt-BR": "Modo escuro",
+    "en": "Dark mode",
+    "es": "Modo oscuro",
+    "ja": "ダークモード",
+    "zh-CN": "深色模式",
+    "ru": "Тёмная тема"
+  },
+  "Mudar para o tema claro": {
+    "pt-BR": "Mudar para o tema claro",
+    "en": "Switch to light mode",
+    "es": "Cambiar al modo claro",
+    "ja": "ライトモードに切り替え",
+    "zh-CN": "切换为浅色模式",
+    "ru": "Включить светлую тему"
+  },
+  "Mudar para o tema escuro": {
+    "pt-BR": "Mudar para o tema escuro",
+    "en": "Switch to dark mode",
+    "es": "Cambiar al modo oscuro",
+    "ja": "ダークモードに切り替え",
+    "zh-CN": "切换为深色模式",
+    "ru": "Включить тёмную тему"
+  },
+  "Sair": {
+    "pt-BR": "Sair",
+    "en": "Sign out",
+    "es": "Cerrar sesión",
+    "ja": "ログアウト",
+    "zh-CN": "退出登录",
+    "ru": "Выйти"
+  },
+  "Monitoramento": {
+    "pt-BR": "Monitoramento",
+    "en": "Monitoring",
+    "es": "Supervisión",
+    "ja": "監視",
+    "zh-CN": "监控",
+    "ru": "Мониторинг"
+  },
+  "Estado dos serviços e histórico de verificações.": {
+    "pt-BR": "Estado dos serviços e histórico de verificações.",
+    "en": "Service status and check history.",
+    "es": "Estado de los servicios e historial de comprobaciones.",
+    "ja": "サービスの状態とチェック履歴。",
+    "zh-CN": "服务状态与检查历史。",
+    "ru": "Состояние сервисов и история проверок."
+  },
+  "Demonstração": {
+    "pt-BR": "Demonstração",
+    "en": "Demo",
+    "es": "Demostración",
+    "ja": "デモ",
+    "zh-CN": "演示",
+    "ru": "Демо"
+  },
+  "Adicionar monitor": {
+    "pt-BR": "Adicionar monitor",
+    "en": "Add monitor",
+    "es": "Añadir monitor",
+    "ja": "監視対象を追加",
+    "zh-CN": "添加监控项",
+    "ru": "Добавить монитор"
+  },
+  "Ambiente de demonstração": {
+    "pt-BR": "Ambiente de demonstração",
+    "en": "Demo environment",
+    "es": "Entorno de demostración",
+    "ja": "デモ環境",
+    "zh-CN": "演示环境",
+    "ru": "Демонстрационная среда"
+  },
+  "Dados fictícios. Nenhum serviço desta lista está sendo consultado.": {
+    "pt-BR": "Dados fictícios. Nenhum serviço desta lista está sendo consultado.",
+    "en": "Sample data. No services in this list are being checked.",
+    "es": "Datos ficticios. No se está comprobando ningún servicio de esta lista.",
+    "ja": "サンプルデータです。この一覧のサービスへのチェックは行いません。",
+    "zh-CN": "示例数据。系统不会检查此列表中的服务。",
+    "ru": "Пример данных. Сервисы из этого списка не проверяются."
+  },
+  "Sair da demonstração": {
+    "pt-BR": "Sair da demonstração",
+    "en": "Exit demo",
+    "es": "Salir de la demostración",
+    "ja": "デモを終了",
+    "zh-CN": "退出演示",
+    "ru": "Выйти из демо"
+  },
+  "Resumo das verificações": {
+    "pt-BR": "Resumo das verificações",
+    "en": "Checks overview",
+    "es": "Resumen de comprobaciones",
+    "ja": "チェックの概要",
+    "zh-CN": "检查概览",
+    "ru": "Обзор проверок"
+  },
+  "Cadastrados": {
+    "pt-BR": "Cadastrados",
+    "en": "Configured",
+    "es": "Configurados",
+    "ja": "登録済み",
+    "zh-CN": "已配置",
+    "ru": "Настроено"
+  },
+  "Saudáveis": {
+    "pt-BR": "Saudáveis",
+    "en": "Healthy",
+    "es": "Sin problemas",
+    "ja": "正常",
+    "zh-CN": "正常",
+    "ru": "В норме"
+  },
+  "Resposta recente dentro do limite": {
+    "pt-BR": "Resposta recente dentro do limite",
+    "en": "Recent response within threshold",
+    "es": "Respuesta reciente dentro del límite",
+    "ja": "直近の応答がしきい値以内",
+    "zh-CN": "最近响应未超过阈值",
+    "ru": "Последний ответ в пределах порога"
+  },
+  "Precisam de atenção": {
+    "pt-BR": "Precisam de atenção",
+    "en": "Need attention",
+    "es": "Requieren atención",
+    "ja": "要確認",
+    "zh-CN": "需要关注",
+    "ru": "Требуют внимания"
+  },
+  "Falha, lentidão ou dados desatualizados": {
+    "pt-BR": "Falha, lentidão ou dados desatualizados",
+    "en": "Failure, slowness or stale data",
+    "es": "Fallo, lentitud o datos desactualizados",
+    "ja": "障害、遅延、または古いデータ",
+    "zh-CN": "故障、响应慢或数据过期",
+    "ru": "Сбой, задержка или устаревшие данные"
+  },
+  "Disponibilidade em 24h": {
+    "pt-BR": "Disponibilidade em 24h",
+    "en": "Availability over 24h",
+    "es": "Disponibilidad en 24 h",
+    "ja": "過去24時間の稼働率",
+    "zh-CN": "过去24小时可用率",
+    "ru": "Доступность за 24 ч"
+  },
+  "Média por serviço com amostras": {
+    "pt-BR": "Média por serviço com amostras",
+    "en": "Average across sampled services",
+    "es": "Promedio de servicios con muestras",
+    "ja": "サンプルのあるサービスの平均",
+    "zh-CN": "有采样数据的服务平均值",
+    "ru": "Среднее по сервисам с данными"
+  },
+  "Filtrar por estado": {
+    "pt-BR": "Filtrar por estado",
+    "en": "Filter by status",
+    "es": "Filtrar por estado",
+    "ja": "状態で絞り込む",
+    "zh-CN": "按状态筛选",
+    "ru": "Фильтр по состоянию"
+  },
+  "Todos os estados": {
+    "pt-BR": "Todos os estados",
+    "en": "All statuses",
+    "es": "Todos los estados",
+    "ja": "すべての状態",
+    "zh-CN": "所有状态",
+    "ru": "Все состояния"
+  },
+  "Com atenção": {
+    "pt-BR": "Com atenção",
+    "en": "Needs attention",
+    "es": "Requiere atención",
+    "ja": "要確認",
+    "zh-CN": "需要关注",
+    "ru": "Требует внимания"
+  },
+  "Sem verificação": {
+    "pt-BR": "Sem verificação",
+    "en": "Not checked",
+    "es": "Sin comprobar",
+    "ja": "未チェック",
+    "zh-CN": "尚未检查",
+    "ru": "Не проверен"
+  },
+  "Buscar monitores": {
+    "pt-BR": "Buscar monitores",
+    "en": "Search monitors",
+    "es": "Buscar monitores",
+    "ja": "監視対象を検索",
+    "zh-CN": "搜索监控项",
+    "ru": "Поиск мониторов"
+  },
+  "Buscar por nome ou endereço": {
+    "pt-BR": "Buscar por nome ou endereço",
+    "en": "Search by name or address",
+    "es": "Buscar por nombre o dirección",
+    "ja": "名前またはアドレスで検索",
+    "zh-CN": "按名称或地址搜索",
+    "ru": "Поиск по имени или адресу"
+  },
+  "Serviço": {
+    "pt-BR": "Serviço",
+    "en": "Service",
+    "es": "Servicio",
+    "ja": "サービス",
+    "zh-CN": "服务",
+    "ru": "Сервис"
+  },
+  "Estado": {
+    "pt-BR": "Estado",
+    "en": "Status",
+    "es": "Estado",
+    "ja": "状態",
+    "zh-CN": "状态",
+    "ru": "Состояние"
+  },
+  "Resposta": {
+    "pt-BR": "Resposta",
+    "en": "Response",
+    "es": "Respuesta",
+    "ja": "応答",
+    "zh-CN": "响应",
+    "ru": "Ответ"
+  },
+  "Disponibilidade · 24h": {
+    "pt-BR": "Disponibilidade · 24h",
+    "en": "Availability · 24h",
+    "es": "Disponibilidad · 24 h",
+    "ja": "稼働率 · 24時間",
+    "zh-CN": "可用率 · 24小时",
+    "ru": "Доступность · 24 ч"
+  },
+  "Última verificação": {
+    "pt-BR": "Última verificação",
+    "en": "Last checked",
+    "es": "Última comprobación",
+    "ja": "最終チェック",
+    "zh-CN": "上次检查",
+    "ru": "Последняя проверка"
+  },
+  "Ações": {
+    "pt-BR": "Ações",
+    "en": "Actions",
+    "es": "Acciones",
+    "ja": "操作",
+    "zh-CN": "操作",
+    "ru": "Действия"
+  },
+  "Nenhum monitor cadastrado": {
+    "pt-BR": "Nenhum monitor cadastrado",
+    "en": "No monitors configured",
+    "es": "No hay monitores configurados",
+    "ja": "監視対象がありません",
+    "zh-CN": "尚未配置监控项",
+    "ru": "Нет настроенных мониторов"
+  },
+  "Adicione um site ou API para começar a registrar as verificações.": {
+    "pt-BR": "Adicione um site ou API para começar a registrar as verificações.",
+    "en": "Add a website or API to start recording checks.",
+    "es": "Añada un sitio web o una API para registrar comprobaciones.",
+    "ja": "サイトまたはAPIを追加してチェックの記録を開始します。",
+    "zh-CN": "添加网站或 API 以开始记录检查结果。",
+    "ru": "Добавьте сайт или API, чтобы начать запись проверок."
+  },
+  "Adicionar primeiro monitor": {
+    "pt-BR": "Adicionar primeiro monitor",
+    "en": "Add your first monitor",
+    "es": "Añadir el primer monitor",
+    "ja": "最初の監視対象を追加",
+    "zh-CN": "添加第一个监控项",
+    "ru": "Добавить первый монитор"
+  },
+  "Disponibilidade calculada por amostras. Uma resposta antiga não confirma o estado atual do serviço.": {
+    "pt-BR": "Disponibilidade calculada por amostras. Uma resposta antiga não confirma o estado atual do serviço.",
+    "en": "Availability is sample-based. An old response does not confirm the current service status.",
+    "es": "La disponibilidad se calcula por muestras. Una respuesta antigua no confirma el estado actual.",
+    "ja": "稼働率はサンプルに基づきます。古い応答は現在の状態を示しません。",
+    "zh-CN": "可用率基于采样计算。旧响应不能确认服务当前状态。",
+    "ru": "Доступность рассчитана по выборке. Старый ответ не подтверждает текущее состояние сервиса."
+  },
+  "Últimos 30 registros": {
+    "pt-BR": "Últimos 30 registros",
+    "en": "Latest 30 records",
+    "es": "Últimos 30 registros",
+    "ja": "最新30件",
+    "zh-CN": "最近30条记录",
+    "ru": "Последние 30 записей"
+  },
+  "Monitor de sites e APIs": {
+    "pt-BR": "Monitor de sites e APIs",
+    "en": "Website and API monitor",
+    "es": "Monitor de sitios web y API",
+    "ja": "サイト・API監視",
+    "zh-CN": "网站与 API 监控",
+    "ru": "Монитор сайтов и API"
+  },
+  "Aguardando dados": {
+    "pt-BR": "Aguardando dados",
+    "en": "Waiting for data",
+    "es": "Esperando datos",
+    "ja": "データ待ち",
+    "zh-CN": "等待数据",
+    "ru": "Ожидание данных"
+  },
+  "Informe a URL final de um serviço público HTTP ou HTTPS.": {
+    "pt-BR": "Informe a URL final de um serviço público HTTP ou HTTPS.",
+    "en": "Enter the final URL of a public HTTP or HTTPS service.",
+    "es": "Introduzca la URL final de un servicio HTTP o HTTPS público.",
+    "ja": "公開HTTPまたはHTTPSサービスの最終URLを入力してください。",
+    "zh-CN": "请输入公共 HTTP 或 HTTPS 服务的最终 URL。",
+    "ru": "Введите конечный URL общедоступного HTTP- или HTTPS-сервиса."
+  },
+  "Fechar": {
+    "pt-BR": "Fechar",
+    "en": "Close",
+    "es": "Cerrar",
+    "ja": "閉じる",
+    "zh-CN": "关闭",
+    "ru": "Закрыть"
+  },
+  "Nome": {
+    "pt-BR": "Nome",
+    "en": "Name",
+    "es": "Nombre",
+    "ja": "名前",
+    "zh-CN": "名称",
+    "ru": "Название"
+  },
+  "Ex.: API de pedidos": {
+    "pt-BR": "Ex.: API de pedidos",
+    "en": "E.g. Orders API",
+    "es": "Ej.: API de pedidos",
+    "ja": "例：注文API",
+    "zh-CN": "例如：订单 API",
+    "ru": "Например: API заказов"
+  },
+  "Não inclua senhas ou tokens no endereço.": {
+    "pt-BR": "Não inclua senhas ou tokens no endereço.",
+    "en": "Do not include passwords or tokens in the address.",
+    "es": "No incluya contraseñas ni tokens en la dirección.",
+    "ja": "アドレスにパスワードやトークンを含めないでください。",
+    "zh-CN": "请勿在地址中包含密码或令牌。",
+    "ru": "Не указывайте в адресе пароли или токены."
+  },
+  "Intervalo": {
+    "pt-BR": "Intervalo",
+    "en": "Interval",
+    "es": "Intervalo",
+    "ja": "間隔",
+    "zh-CN": "间隔",
+    "ru": "Интервал"
+  },
+  "1 minuto": {
+    "pt-BR": "1 minuto",
+    "en": "1 minute",
+    "es": "1 minuto",
+    "ja": "1分",
+    "zh-CN": "1分钟",
+    "ru": "1 минута"
+  },
+  "5 minutos": {
+    "pt-BR": "5 minutos",
+    "en": "5 minutes",
+    "es": "5 minutos",
+    "ja": "5分",
+    "zh-CN": "5分钟",
+    "ru": "5 минут"
+  },
+  "15 minutos": {
+    "pt-BR": "15 minutos",
+    "en": "15 minutes",
+    "es": "15 minutos",
+    "ja": "15分",
+    "zh-CN": "15分钟",
+    "ru": "15 минут"
+  },
+  "1 hora": {
+    "pt-BR": "1 hora",
+    "en": "1 hour",
+    "es": "1 hora",
+    "ja": "1時間",
+    "zh-CN": "1小时",
+    "ru": "1 час"
+  },
+  "Limite de resposta (ms)": {
+    "pt-BR": "Limite de resposta (ms)",
+    "en": "Response threshold (ms)",
+    "es": "Límite de respuesta (ms)",
+    "ja": "応答しきい値（ms）",
+    "zh-CN": "响应阈值（毫秒）",
+    "ru": "Порог ответа (мс)"
+  },
+  "Texto esperado": {
+    "pt-BR": "Texto esperado",
+    "en": "Expected text",
+    "es": "Texto esperado",
+    "ja": "期待するテキスト",
+    "zh-CN": "预期文本",
+    "ru": "Ожидаемый текст"
+  },
+  "(opcional)": {
+    "pt-BR": "(opcional)",
+    "en": "(optional)",
+    "es": "(opcional)",
+    "ja": "（任意）",
+    "zh-CN": "（可选）",
+    "ru": "(необязательно)"
+  },
+  "Ex.: ok": {
+    "pt-BR": "Ex.: ok",
+    "en": "E.g. ok",
+    "es": "Ej.: ok",
+    "ja": "例：ok",
+    "zh-CN": "例如：ok",
+    "ru": "Например: ok"
+  },
+  "O coletor precisa estar em execução para realizar verificações automáticas.": {
+    "pt-BR": "O coletor precisa estar em execução para realizar verificações automáticas.",
+    "en": "The collector must be running for automatic checks.",
+    "es": "El recolector debe estar en ejecución para las comprobaciones automáticas.",
+    "ja": "自動チェックにはコレクターの実行が必要です。",
+    "zh-CN": "自动检查需要采集器保持运行。",
+    "ru": "Для автоматических проверок сборщик должен работать."
+  },
+  "Criar monitor": {
+    "pt-BR": "Criar monitor",
+    "en": "Create monitor",
+    "es": "Crear monitor",
+    "ja": "監視対象を作成",
+    "zh-CN": "创建监控项",
+    "ru": "Создать монитор"
+  },
+  "Saudável": {
+    "pt-BR": "Saudável",
+    "en": "Healthy",
+    "es": "Sin problemas",
+    "ja": "正常",
+    "zh-CN": "正常",
+    "ru": "В норме"
+  },
+  "Lento": {
+    "pt-BR": "Lento",
+    "en": "Slow",
+    "es": "Lento",
+    "ja": "遅延",
+    "zh-CN": "响应慢",
+    "ru": "Медленно"
+  },
+  "Indisponível": {
+    "pt-BR": "Indisponível",
+    "en": "Down",
+    "es": "No disponible",
+    "ja": "停止",
+    "zh-CN": "不可用",
+    "ru": "Недоступен"
+  },
+  "Desatualizado": {
+    "pt-BR": "Desatualizado",
+    "en": "Stale",
+    "es": "Desactualizado",
+    "ja": "データが古い",
+    "zh-CN": "数据过期",
+    "ru": "Данные устарели"
+  },
+  "Ainda não verificado": {
+    "pt-BR": "Ainda não verificado",
+    "en": "Not checked yet",
+    "es": "Aún sin comprobar",
+    "ja": "未チェック",
+    "zh-CN": "尚未检查",
+    "ru": "Ещё не проверен"
+  },
+  "Website institucional": {
+    "pt-BR": "Website institucional",
+    "en": "Company website",
+    "es": "Sitio web corporativo",
+    "ja": "企業サイト",
+    "zh-CN": "企业网站",
+    "ru": "Сайт компании"
+  },
+  "API de pedidos": {
+    "pt-BR": "API de pedidos",
+    "en": "Orders API",
+    "es": "API de pedidos",
+    "ja": "注文API",
+    "zh-CN": "订单 API",
+    "ru": "API заказов"
+  },
+  "Portal do cliente": {
+    "pt-BR": "Portal do cliente",
+    "en": "Customer portal",
+    "es": "Portal del cliente",
+    "ja": "顧客ポータル",
+    "zh-CN": "客户门户",
+    "ru": "Клиентский портал"
+  },
+  "Serviço de pagamentos": {
+    "pt-BR": "Serviço de pagamentos",
+    "en": "Payment service",
+    "es": "Servicio de pagos",
+    "ja": "決済サービス",
+    "zh-CN": "支付服务",
+    "ru": "Платёжный сервис"
+  },
+  "HTTP 503. Serviço temporariamente indisponível.": {
+    "pt-BR": "HTTP 503. Serviço temporariamente indisponível.",
+    "en": "HTTP 503. Service temporarily unavailable.",
+    "es": "HTTP 503. Servicio temporalmente no disponible.",
+    "ja": "HTTP 503。サービスは一時的に利用できません。",
+    "zh-CN": "HTTP 503。服务暂时不可用。",
+    "ru": "HTTP 503. Сервис временно недоступен."
+  },
+  "Amostra fictícia de demonstração.": {
+    "pt-BR": "Amostra fictícia de demonstração.",
+    "en": "Fictional demo sample.",
+    "es": "Muestra ficticia de demostración.",
+    "ja": "デモ用の架空サンプル。",
+    "zh-CN": "虚构演示样本。",
+    "ru": "Вымышленный демонстрационный пример."
+  },
+  "Sua sessão expirou. Entre novamente.": {
+    "pt-BR": "Sua sessão expirou. Entre novamente.",
+    "en": "Your session expired. Sign in again.",
+    "es": "Su sesión ha caducado. Vuelva a iniciar sesión.",
+    "ja": "セッションが切れました。再度ログインしてください。",
+    "zh-CN": "会话已过期，请重新登录。",
+    "ru": "Сессия истекла. Войдите снова."
+  },
+  "Não foi possível acessar o serviço.": {
+    "pt-BR": "Não foi possível acessar o serviço.",
+    "en": "Unable to reach the service.",
+    "es": "No se pudo acceder al servicio.",
+    "ja": "サービスに接続できませんでした。",
+    "zh-CN": "无法访问服务。",
+    "ru": "Не удалось подключиться к сервису."
+  },
+  "Nenhum monitor corresponde aos filtros.": {
+    "pt-BR": "Nenhum monitor corresponde aos filtros.",
+    "en": "No monitors match the filters.",
+    "es": "Ningún monitor coincide con los filtros.",
+    "ja": "条件に一致する監視対象はありません。",
+    "zh-CN": "没有符合筛选条件的监控项。",
+    "ru": "Нет мониторов, соответствующих фильтрам."
+  },
+  "Nenhum incidente registrado.": {
+    "pt-BR": "Nenhum incidente registrado.",
+    "en": "No incidents recorded.",
+    "es": "No hay incidentes registrados.",
+    "ja": "インシデントの記録はありません。",
+    "zh-CN": "暂无故障记录。",
+    "ru": "Инцидентов не зарегистрировано."
+  },
+  "Dados demonstrativos · ": {
+    "pt-BR": "Dados demonstrativos · ",
+    "en": "Demo data · ",
+    "es": "Datos de demostración · ",
+    "ja": "デモデータ · ",
+    "zh-CN": "演示数据 · ",
+    "ru": "Демо-данные · "
+  },
+  "Atualizado · ": {
+    "pt-BR": "Atualizado · ",
+    "en": "Updated · ",
+    "es": "Actualizado · ",
+    "ja": "更新 · ",
+    "zh-CN": "更新于 · ",
+    "ru": "Обновлено · "
+  },
+  "Verificar": {
+    "pt-BR": "Verificar",
+    "en": "Check",
+    "es": "Comprobar",
+    "ja": "チェック",
+    "zh-CN": "检查",
+    "ru": "Проверить"
+  },
+  "Verificar ": {
+    "pt-BR": "Verificar ",
+    "en": "Check ",
+    "es": "Comprobar ",
+    "ja": "チェック：",
+    "zh-CN": "检查 ",
+    "ru": "Проверить "
+  },
+  "Verificando…": {
+    "pt-BR": "Verificando…",
+    "en": "Checking…",
+    "es": "Comprobando…",
+    "ja": "チェック中…",
+    "zh-CN": "正在检查…",
+    "ru": "Проверка…"
+  },
+  "Detalhes": {
+    "pt-BR": "Detalhes",
+    "en": "Details",
+    "es": "Detalles",
+    "ja": "詳細",
+    "zh-CN": "详情",
+    "ru": "Подробности"
+  },
+  "Detalhes de ": {
+    "pt-BR": "Detalhes de ",
+    "en": "Details for ",
+    "es": "Detalles de ",
+    "ja": "詳細：",
+    "zh-CN": "详情：",
+    "ru": "Подробности: "
+  },
+  "Intervalo: ": {
+    "pt-BR": "Intervalo: ",
+    "en": "Interval: ",
+    "es": "Intervalo: ",
+    "ja": "間隔：",
+    "zh-CN": "间隔：",
+    "ru": "Интервал: "
+  },
+  "min": {
+    "pt-BR": "min",
+    "en": "min",
+    "es": "min",
+    "ja": "分",
+    "zh-CN": "分钟",
+    "ru": "мин"
+  },
+  "ms": {
+    "pt-BR": "ms",
+    "en": "ms",
+    "es": "ms",
+    "ja": "ms",
+    "zh-CN": "毫秒",
+    "ru": "мс"
+  },
+  "Limite de resposta: ": {
+    "pt-BR": "Limite de resposta: ",
+    "en": "Response threshold: ",
+    "es": "Límite de respuesta: ",
+    "ja": "応答しきい値：",
+    "zh-CN": "响应阈值：",
+    "ru": "Порог ответа: "
+  },
+  "sem resposta": {
+    "pt-BR": "sem resposta",
+    "en": "no response",
+    "es": "sin respuesta",
+    "ja": "応答なし",
+    "zh-CN": "无响应",
+    "ru": "нет ответа"
+  },
+  "Nenhuma resposta registrada": {
+    "pt-BR": "Nenhuma resposta registrada",
+    "en": "No responses recorded",
+    "es": "No hay respuestas registradas",
+    "ja": "応答の記録なし",
+    "zh-CN": "暂无响应记录",
+    "ru": "Ответов не зарегистрировано"
+  },
+  "Verificação desatualizada. Confirme se o coletor está em execução; o estado atual do serviço é desconhecido.": {
+    "pt-BR": "Verificação desatualizada. Confirme se o coletor está em execução; o estado atual do serviço é desconhecido.",
+    "en": "Check data is stale. Make sure the collector is running; the current service status is unknown.",
+    "es": "La comprobación está desactualizada. Verifique que el recolector esté activo; se desconoce el estado actual.",
+    "ja": "チェックデータが古くなっています。コレクターの実行を確認してください。現在の状態は不明です。",
+    "zh-CN": "检查数据已过期。请确认采集器正在运行；服务当前状态未知。",
+    "ru": "Данные проверки устарели. Убедитесь, что сборщик работает; текущее состояние сервиса неизвестно."
+  },
+  "Aguardando a primeira verificação.": {
+    "pt-BR": "Aguardando a primeira verificação.",
+    "en": "Waiting for the first check.",
+    "es": "Esperando la primera comprobación.",
+    "ja": "最初のチェックを待っています。",
+    "zh-CN": "等待首次检查。",
+    "ru": "Ожидание первой проверки."
+  },
+  "Sem amostras nas últimas 24 horas.": {
+    "pt-BR": "Sem amostras nas últimas 24 horas.",
+    "en": "No samples in the last 24 hours.",
+    "es": "Sin muestras en las últimas 24 horas.",
+    "ja": "過去24時間のサンプルはありません。",
+    "zh-CN": "过去24小时没有采样数据。",
+    "ru": "Нет данных за последние 24 часа."
+  },
+  "Amostras das últimas 24 horas": {
+    "pt-BR": "Amostras das últimas 24 horas",
+    "en": "Samples from the last 24 hours",
+    "es": "Muestras de las últimas 24 horas",
+    "ja": "過去24時間のサンプル",
+    "zh-CN": "过去24小时的采样",
+    "ru": "Данные за последние 24 часа"
+  },
+  "Tempo de resposta; lacunas indicam ausência de resposta HTTP. Escala relativa às amostras exibidas.": {
+    "pt-BR": "Tempo de resposta; lacunas indicam ausência de resposta HTTP. Escala relativa às amostras exibidas.",
+    "en": "Response time; gaps mean no HTTP response. Scale is relative to displayed samples.",
+    "es": "Tiempo de respuesta; los huecos indican falta de respuesta HTTP. Escala relativa a las muestras mostradas.",
+    "ja": "応答時間。空白はHTTP応答なしを示します。表示サンプルに対する相対スケールです。",
+    "zh-CN": "响应时间；空白表示没有 HTTP 响应。刻度相对于显示的样本。",
+    "ru": "Время ответа; пропуски означают отсутствие HTTP-ответа. Масштаб зависит от показанных данных."
+  },
+  "sem resposta HTTP": {
+    "pt-BR": "sem resposta HTTP",
+    "en": "no HTTP response",
+    "es": "sin respuesta HTTP",
+    "ja": "HTTP応答なし",
+    "zh-CN": "无 HTTP 响应",
+    "ru": "нет HTTP-ответа"
+  },
+  "Resolvido": {
+    "pt-BR": "Resolvido",
+    "en": "Resolved",
+    "es": "Resuelto",
+    "ja": "復旧済み",
+    "zh-CN": "已恢复",
+    "ru": "Устранён"
+  },
+  "Em andamento": {
+    "pt-BR": "Em andamento",
+    "en": "Ongoing",
+    "es": "En curso",
+    "ja": "継続中",
+    "zh-CN": "进行中",
+    "ru": "Продолжается"
+  },
+  "Início: ": {
+    "pt-BR": "Início: ",
+    "en": "Started: ",
+    "es": "Inicio: ",
+    "ja": "開始：",
+    "zh-CN": "开始：",
+    "ru": "Начало: "
+  },
+  "Recuperado: ": {
+    "pt-BR": "Recuperado: ",
+    "en": "Recovered: ",
+    "es": "Recuperado: ",
+    "ja": "復旧：",
+    "zh-CN": "恢复：",
+    "ru": "Восстановлен: "
+  },
+  "Aguardando recuperação": {
+    "pt-BR": "Aguardando recuperação",
+    "en": "Awaiting recovery",
+    "es": "Esperando recuperación",
+    "ja": "復旧待ち",
+    "zh-CN": "等待恢复",
+    "ru": "Ожидание восстановления"
+  },
+  "Não foi possível sair. Atualize a página e tente novamente.": {
+    "pt-BR": "Não foi possível sair. Atualize a página e tente novamente.",
+    "en": "Unable to sign out. Refresh the page and try again.",
+    "es": "No se pudo cerrar la sesión. Actualice la página e inténtelo de nuevo.",
+    "ja": "ログアウトできませんでした。ページを更新して再試行してください。",
+    "zh-CN": "无法退出登录。请刷新页面后重试。",
+    "ru": "Не удалось выйти. Обновите страницу и повторите попытку."
+  },
+  "Acesso protegido": {
+    "pt-BR": "Acesso protegido",
+    "en": "Protected access",
+    "es": "Acceso protegido",
+    "ja": "保護されたアクセス",
+    "zh-CN": "受保护的访问",
+    "ru": "Защищённый доступ"
+  },
+  "Entrar no Pulse": {
+    "pt-BR": "Entrar no Pulse",
+    "en": "Sign in to Pulse",
+    "es": "Iniciar sesión en Pulse",
+    "ja": "Pulse にログイン",
+    "zh-CN": "登录 Pulse",
+    "ru": "Вход в Pulse"
+  },
+  "Use seu acesso para consultar e administrar os monitores.": {
+    "pt-BR": "Use seu acesso para consultar e administrar os monitores.",
+    "en": "Sign in to view and manage your monitors.",
+    "es": "Inicie sesión para consultar y administrar sus monitores.",
+    "ja": "ログインして監視対象を確認・管理します。",
+    "zh-CN": "登录以查看和管理监控项。",
+    "ru": "Войдите для просмотра и управления мониторами."
+  },
+  "Usuário": {
+    "pt-BR": "Usuário",
+    "en": "Username",
+    "es": "Usuario",
+    "ja": "ユーザー名",
+    "zh-CN": "用户名",
+    "ru": "Имя пользователя"
+  },
+  "Senha": {
+    "pt-BR": "Senha",
+    "en": "Password",
+    "es": "Contraseña",
+    "ja": "パスワード",
+    "zh-CN": "密码",
+    "ru": "Пароль"
+  },
+  "Confirmar senha": {
+    "pt-BR": "Confirmar senha",
+    "en": "Confirm password",
+    "es": "Confirmar contraseña",
+    "ja": "パスワードの確認",
+    "zh-CN": "确认密码",
+    "ru": "Подтвердите пароль"
+  },
+  "Entrar": {
+    "pt-BR": "Entrar",
+    "en": "Sign in",
+    "es": "Iniciar sesión",
+    "ja": "ログイン",
+    "zh-CN": "登录",
+    "ru": "Войти"
+  },
+  "O coletor continua funcionando mesmo com o painel desconectado.": {
+    "pt-BR": "O coletor continua funcionando mesmo com o painel desconectado.",
+    "en": "The collector keeps running while you are signed out.",
+    "es": "El recolector sigue funcionando con la sesión cerrada.",
+    "ja": "ログアウト中もコレクターは動作します。",
+    "zh-CN": "退出登录后，采集器仍会继续运行。",
+    "ru": "Сборщик продолжает работать после выхода из панели."
+  },
+  "Ver demonstração com dados fictícios": {
+    "pt-BR": "Ver demonstração com dados fictícios",
+    "en": "View demo with sample data",
+    "es": "Ver demostración con datos ficticios",
+    "ja": "サンプルデータのデモを見る",
+    "zh-CN": "查看示例数据演示",
+    "ru": "Открыть демо с примером данных"
+  },
+  "Não foi possível carregar o acesso.": {
+    "pt-BR": "Não foi possível carregar o acesso.",
+    "en": "Unable to load the sign-in page.",
+    "es": "No se pudo cargar el acceso.",
+    "ja": "ログイン情報を読み込めませんでした。",
+    "zh-CN": "无法加载登录页面。",
+    "ru": "Не удалось загрузить страницу входа."
+  },
+  "Crie o primeiro acesso abrindo o Pulse no próprio computador servidor.": {
+    "pt-BR": "Crie o primeiro acesso abrindo o Pulse no próprio computador servidor.",
+    "en": "Create the first account by opening Pulse on the server computer.",
+    "es": "Cree la primera cuenta abriendo Pulse en el equipo servidor.",
+    "ja": "サーバーのコンピューターでPulseを開き、最初のアカウントを作成してください。",
+    "zh-CN": "请在服务器本机打开 Pulse，创建首个账户。",
+    "ru": "Откройте Pulse на компьютере-сервере и создайте первый аккаунт."
+  },
+  "Configure seu acesso": {
+    "pt-BR": "Configure seu acesso",
+    "en": "Set up your account",
+    "es": "Configure su acceso",
+    "ja": "アカウントの設定",
+    "zh-CN": "设置账户",
+    "ru": "Настройте доступ"
+  },
+  "Crie o usuário administrador. Use uma senha de 12 a 72 bytes; uma frase longa funciona bem. Não há senha padrão.": {
+    "pt-BR": "Crie o usuário administrador. Use uma senha de 12 a 72 bytes; uma frase longa funciona bem. Não há senha padrão.",
+    "en": "Create an administrator account. Use a password of 12–72 bytes; a long passphrase works well. There is no default password.",
+    "es": "Cree una cuenta administradora. Use una contraseña de 12 a 72 bytes; una frase larga funciona bien. No hay contraseña predeterminada.",
+    "ja": "管理者アカウントを作成します。パスワードは12～72バイトにしてください。長いパスフレーズを推奨します。初期パスワードはありません。",
+    "zh-CN": "创建管理员账户。密码长度须为12至72字节，建议使用长密码短语。系统没有默认密码。",
+    "ru": "Создайте аккаунт администратора. Пароль должен занимать 12–72 байта; подойдёт длинная парольная фраза. Пароля по умолчанию нет."
+  },
+  "Criar acesso": {
+    "pt-BR": "Criar acesso",
+    "en": "Create account",
+    "es": "Crear cuenta",
+    "ja": "アカウントを作成",
+    "zh-CN": "创建账户",
+    "ru": "Создать аккаунт"
+  },
+  "As senhas precisam ser iguais.": {
+    "pt-BR": "As senhas precisam ser iguais.",
+    "en": "Passwords must match.",
+    "es": "Las contraseñas deben coincidir.",
+    "ja": "パスワードが一致しません。",
+    "zh-CN": "两次密码必须一致。",
+    "ru": "Пароли должны совпадать."
+  },
+  "Não foi possível entrar.": {
+    "pt-BR": "Não foi possível entrar.",
+    "en": "Unable to sign in.",
+    "es": "No se pudo iniciar sesión.",
+    "ja": "ログインできませんでした。",
+    "zh-CN": "无法登录。",
+    "ru": "Не удалось войти."
+  },
+  "Acesso criado. Entre com seu usuário e senha.": {
+    "pt-BR": "Acesso criado. Entre com seu usuário e senha.",
+    "en": "Account created. Sign in with your username and password.",
+    "es": "Cuenta creada. Inicie sesión con su usuario y contraseña.",
+    "ja": "アカウントを作成しました。ユーザー名とパスワードでログインしてください。",
+    "zh-CN": "账户已创建。请使用用户名和密码登录。",
+    "ru": "Аккаунт создан. Войдите с вашим именем пользователя и паролем."
+  },
+  "Resposta dentro do esperado.": {
+    "pt-BR": "Resposta dentro do esperado.",
+    "en": "Response meets expectations.",
+    "es": "La respuesta cumple lo esperado.",
+    "ja": "応答は正常です。",
+    "zh-CN": "响应符合预期。",
+    "ru": "Ответ соответствует ожиданиям."
+  },
+  "Destino bloqueado: é necessário um endereço IPv4 público.": {
+    "pt-BR": "Destino bloqueado: é necessário um endereço IPv4 público.",
+    "en": "Blocked destination: a public IPv4 address is required.",
+    "es": "Destino bloqueado: se requiere una dirección IPv4 pública.",
+    "ja": "接続先をブロックしました。公開IPv4アドレスが必要です。",
+    "zh-CN": "目标已被阻止：需要公共 IPv4 地址。",
+    "ru": "Адрес заблокирован: требуется общедоступный IPv4-адрес."
+  },
+  "Resposta excedeu o limite de 1 MB.": {
+    "pt-BR": "Resposta excedeu o limite de 1 MB.",
+    "en": "Response exceeded the 1 MB limit.",
+    "es": "La respuesta superó el límite de 1 MB.",
+    "ja": "応答が1 MBの上限を超えました。",
+    "zh-CN": "响应超过1 MB的限制。",
+    "ru": "Ответ превысил ограничение в 1 МБ."
+  },
+  "Texto esperado não encontrado.": {
+    "pt-BR": "Texto esperado não encontrado.",
+    "en": "Expected text not found.",
+    "es": "No se encontró el texto esperado.",
+    "ja": "期待するテキストが見つかりません。",
+    "zh-CN": "未找到预期文本。",
+    "ru": "Ожидаемый текст не найден."
+  },
+  "Tempo de resposta acima do limite configurado.": {
+    "pt-BR": "Tempo de resposta acima do limite configurado.",
+    "en": "Response time exceeds the configured threshold.",
+    "es": "El tiempo de respuesta supera el límite configurado.",
+    "ja": "応答時間が設定したしきい値を超えています。",
+    "zh-CN": "响应时间超过配置的阈值。",
+    "ru": "Время ответа превышает заданный порог."
+  },
+  "Falha de conexão, certificado ou tempo limite (cURL {code}).": {
+    "pt-BR": "Falha de conexão, certificado ou tempo limite (cURL {code}).",
+    "en": "Connection, certificate or timeout failure (cURL {code}).",
+    "es": "Fallo de conexión, certificado o tiempo de espera (cURL {code}).",
+    "ja": "接続、証明書、またはタイムアウトのエラー（cURL {code}）。",
+    "zh-CN": "连接、证书或超时错误（cURL {code}）。",
+    "ru": "Ошибка подключения, сертификата или тайм-аут (cURL {code})."
+  },
+  "HTTP {code}. Redirecionamentos não são seguidos; use a URL final.": {
+    "pt-BR": "HTTP {code}. Redirecionamentos não são seguidos; use a URL final.",
+    "en": "HTTP {code}. Redirects are not followed; use the final URL.",
+    "es": "HTTP {code}. No se siguen redirecciones; use la URL final.",
+    "ja": "HTTP {code}。リダイレクトには従いません。最終URLを使用してください。",
+    "zh-CN": "HTTP {code}。不跟随重定向；请使用最终 URL。",
+    "ru": "HTTP {code}. Перенаправления не выполняются; используйте конечный URL."
+  },
+  "Idioma": {
+    "pt-BR": "Idioma",
+    "en": "Language",
+    "es": "Idioma",
+    "ja": "言語",
+    "zh-CN": "语言",
+    "ru": "Язык"
+  },
+  "Pulse — Monitoramento": {
+    "pt-BR": "Pulse — Monitoramento",
+    "en": "Pulse — Monitoring",
+    "es": "Pulse — Monitoreo",
+    "ja": "Pulse — 監視",
+    "zh-CN": "Pulse — 监控",
+    "ru": "Pulse — Мониторинг"
+  },
+  "Acesso — Pulse": {
+    "pt-BR": "Acesso — Pulse",
+    "en": "Sign in — Pulse",
+    "es": "Acceso — Pulse",
+    "ja": "ログイン — Pulse",
+    "zh-CN": "登录 — Pulse",
+    "ru": "Вход — Pulse"
+  },
+  "Os campos de texto devem conter apenas texto.": {
+    "pt-BR": "Os campos de texto devem conter apenas texto.",
+    "en": "Text fields must contain text only.",
+    "es": "Los campos de texto solo deben contener texto.",
+    "ja": "テキスト欄には文字列のみを入力してください。",
+    "zh-CN": "文本字段只能包含文本。",
+    "ru": "Текстовые поля должны содержать только текст."
+  },
+  "Informe um nome com até 80 caracteres.": {
+    "pt-BR": "Informe um nome com até 80 caracteres.",
+    "en": "Enter a name up to 80 characters.",
+    "es": "Introduzca un nombre de hasta 80 caracteres.",
+    "ja": "80文字以内の名前を入力してください。",
+    "zh-CN": "请输入不超过80个字符的名称。",
+    "ru": "Введите имя длиной до 80 символов."
+  },
+  "Use uma URL HTTP/HTTPS, sem credenciais, fragmentos ou portas alternativas.": {
+    "pt-BR": "Use uma URL HTTP/HTTPS, sem credenciais, fragmentos ou portas alternativas.",
+    "en": "Use an HTTP/HTTPS URL without credentials, fragments or alternative ports.",
+    "es": "Use una URL HTTP/HTTPS sin credenciales, fragmentos ni puertos alternativos.",
+    "ja": "認証情報、フラグメント、代替ポートを含まないHTTP/HTTPS URLを使用してください。",
+    "zh-CN": "请使用不含凭据、片段或替代端口的 HTTP/HTTPS URL。",
+    "ru": "Используйте HTTP/HTTPS URL без учётных данных, фрагментов и альтернативных портов."
+  },
+  "Use um endereço público; destinos locais e internos não são permitidos.": {
+    "pt-BR": "Use um endereço público; destinos locais e internos não são permitidos.",
+    "en": "Use a public address; local and internal destinations are not allowed.",
+    "es": "Use una dirección pública; no se permiten destinos locales ni internos.",
+    "ja": "公開アドレスを使用してください。ローカル・内部宛先は許可されません。",
+    "zh-CN": "请使用公共地址；不允许本地或内部目标。",
+    "ru": "Используйте публичный адрес; локальные и внутренние адреса запрещены."
+  },
+  "Intervalo permitido: 60 a 86400 segundos.": {
+    "pt-BR": "Intervalo permitido: 60 a 86400 segundos.",
+    "en": "Allowed interval: 60 to 86400 seconds.",
+    "es": "Intervalo permitido: de 60 a 86400 segundos.",
+    "ja": "間隔は60〜86400秒で指定してください。",
+    "zh-CN": "允许的间隔：60至86400秒。",
+    "ru": "Допустимый интервал: от 60 до 86400 секунд."
+  },
+  "Limite de lentidão permitido: 100 a 10000 ms.": {
+    "pt-BR": "Limite de lentidão permitido: 100 a 10000 ms.",
+    "en": "Allowed slow response threshold: 100 to 10000 ms.",
+    "es": "Umbral de lentitud permitido: de 100 a 10000 ms.",
+    "ja": "遅延しきい値は100〜10000ミリ秒で指定してください。",
+    "zh-CN": "允许的慢响应阈值：100至10000毫秒。",
+    "ru": "Допустимый порог задержки: от 100 до 10000 мс."
+  },
+  "Caractere inválido no texto.": {
+    "pt-BR": "Caractere inválido no texto.",
+    "en": "Invalid character in text.",
+    "es": "Carácter no válido en el texto.",
+    "ja": "テキストに無効な文字があります。",
+    "zh-CN": "文本中包含无效字符。",
+    "ru": "Недопустимый символ в тексте."
+  },
+  "O texto esperado pode ter até 200 caracteres.": {
+    "pt-BR": "O texto esperado pode ter até 200 caracteres.",
+    "en": "Expected text can contain up to 200 characters.",
+    "es": "El texto esperado puede tener hasta 200 caracteres.",
+    "ja": "期待するテキストは200文字以内で指定してください。",
+    "zh-CN": "预期文本最多可包含200个字符。",
+    "ru": "Ожидаемый текст может содержать до 200 символов."
+  },
+  "Origem não permitida.": {
+    "pt-BR": "Origem não permitida.",
+    "en": "Origin not allowed.",
+    "es": "Origen no permitido.",
+    "ja": "許可されていない送信元です。",
+    "zh-CN": "不允许此来源。",
+    "ru": "Источник не разрешён."
+  },
+  "Envie os dados como JSON.": {
+    "pt-BR": "Envie os dados como JSON.",
+    "en": "Send data as JSON.",
+    "es": "Envíe los datos como JSON.",
+    "ja": "データをJSON形式で送信してください。",
+    "zh-CN": "请以 JSON 格式发送数据。",
+    "ru": "Отправьте данные в формате JSON."
+  },
+  "Atualize a página e tente novamente.": {
+    "pt-BR": "Atualize a página e tente novamente.",
+    "en": "Refresh the page and try again.",
+    "es": "Actualice la página e inténtelo de nuevo.",
+    "ja": "ページを再読み込みして、もう一度お試しください。",
+    "zh-CN": "请刷新页面后重试。",
+    "ru": "Обновите страницу и повторите попытку."
+  },
+  "Solicitação muito grande.": {
+    "pt-BR": "Solicitação muito grande.",
+    "en": "Request too large.",
+    "es": "Solicitud demasiado grande.",
+    "ja": "リクエストが大きすぎます。",
+    "zh-CN": "请求过大。",
+    "ru": "Слишком большой запрос."
+  },
+  "Envie um objeto JSON válido.": {
+    "pt-BR": "Envie um objeto JSON válido.",
+    "en": "Send a valid JSON object.",
+    "es": "Envíe un objeto JSON válido.",
+    "ja": "有効なJSONオブジェクトを送信してください。",
+    "zh-CN": "请发送有效的 JSON 对象。",
+    "ru": "Отправьте корректный объект JSON."
+  },
+  "Limite desta versão: 20 monitores.": {
+    "pt-BR": "Limite desta versão: 20 monitores.",
+    "en": "This version supports up to 20 monitors.",
+    "es": "Esta versión admite hasta 20 monitores.",
+    "ja": "このバージョンでは最大20件まで登録できます。",
+    "zh-CN": "此版本最多支持20个监控项。",
+    "ru": "Эта версия поддерживает до 20 мониторов."
+  },
+  "Monitor não encontrado.": {
+    "pt-BR": "Monitor não encontrado.",
+    "en": "Monitor not found.",
+    "es": "Monitor no encontrado.",
+    "ja": "監視対象が見つかりません。",
+    "zh-CN": "未找到监控项。",
+    "ru": "Монитор не найден."
+  },
+  "Aguarde 15 segundos entre verificações manuais.": {
+    "pt-BR": "Aguarde 15 segundos entre verificações manuais.",
+    "en": "Wait 15 seconds between manual checks.",
+    "es": "Espere 15 segundos entre verificaciones manuales.",
+    "ja": "手動確認の間隔は15秒以上空けてください。",
+    "zh-CN": "手动检查之间请等待15秒。",
+    "ru": "Подождите 15 секунд между ручными проверками."
+  },
+  "Há uma verificação em andamento. Tente novamente.": {
+    "pt-BR": "Há uma verificação em andamento. Tente novamente.",
+    "en": "A check is in progress. Try again.",
+    "es": "Hay una verificación en curso. Inténtelo de nuevo.",
+    "ja": "確認中です。もう一度お試しください。",
+    "zh-CN": "正在进行检查。请重试。",
+    "ru": "Проверка уже выполняется. Повторите попытку."
+  },
+  "Ação inválida.": {
+    "pt-BR": "Ação inválida.",
+    "en": "Invalid action.",
+    "es": "Acción no válida.",
+    "ja": "無効な操作です。",
+    "zh-CN": "无效操作。",
+    "ru": "Недопустимое действие."
+  },
+  "Não foi possível concluir. Verifique o banco de dados e as extensões PHP.": {
+    "pt-BR": "Não foi possível concluir. Verifique o banco de dados e as extensões PHP.",
+    "en": "Unable to complete. Check the database and PHP extensions.",
+    "es": "No se pudo completar. Revise la base de datos y las extensiones PHP.",
+    "ja": "処理を完了できません。データベースとPHP拡張を確認してください。",
+    "zh-CN": "无法完成。请检查数据库和 PHP 扩展。",
+    "ru": "Не удалось завершить. Проверьте базу данных и расширения PHP."
+  },
+  "Acesso de rede não permitido. O padrão é somente este computador.": {
+    "pt-BR": "Acesso de rede não permitido. O padrão é somente este computador.",
+    "en": "Network access denied. Access is local to this computer by default.",
+    "es": "Acceso de red denegado. Por defecto, solo se permite este equipo.",
+    "ja": "ネットワークアクセスは拒否されました。既定ではこのコンピューターのみ許可されます。",
+    "zh-CN": "网络访问被拒绝。默认仅允许此计算机访问。",
+    "ru": "Сетевой доступ запрещён. По умолчанию доступ разрешён только с этого компьютера."
+  },
+  "Entre na sua conta para acessar o painel.": {
+    "pt-BR": "Entre na sua conta para acessar o painel.",
+    "en": "Sign in to access the dashboard.",
+    "es": "Inicie sesión para acceder al panel.",
+    "ja": "ダッシュボードにアクセスするにはログインしてください。",
+    "zh-CN": "请登录以访问控制面板。",
+    "ru": "Войдите для доступа к панели."
+  },
+  "Use um usuário de 3 a 64 letras, números, pontos, traços ou sublinhados.": {
+    "pt-BR": "Use um usuário de 3 a 64 letras, números, pontos, traços ou sublinhados.",
+    "en": "Use a username of 3 to 64 letters, numbers, dots, hyphens or underscores.",
+    "es": "Use un usuario de 3 a 64 letras, números, puntos, guiones o guiones bajos.",
+    "ja": "ユーザー名は英数字、ピリオド、ハイフン、下線の3〜64文字にしてください。",
+    "zh-CN": "用户名须为3至64个字母、数字、点、连字符或下划线。",
+    "ru": "Имя пользователя: от 3 до 64 букв, цифр, точек, дефисов или подчёркиваний."
+  },
+  "A senha deve ter entre 12 e 72 bytes. Prefira uma frase longa.": {
+    "pt-BR": "A senha deve ter entre 12 e 72 bytes. Prefira uma frase longa.",
+    "en": "Password must be between 12 and 72 bytes. Prefer a long passphrase.",
+    "es": "La contraseña debe tener entre 12 y 72 bytes. Prefiera una frase larga.",
+    "ja": "パスワードは12〜72バイトにしてください。長いパスフレーズを推奨します。",
+    "zh-CN": "密码须为12至72字节。建议使用较长的密码短语。",
+    "ru": "Пароль должен содержать от 12 до 72 байт. Используйте длинную парольную фразу."
+  },
+  "Crie o primeiro acesso no próprio computador servidor.": {
+    "pt-BR": "Crie o primeiro acesso no próprio computador servidor.",
+    "en": "Set up the first account on the server computer.",
+    "es": "Configure la primera cuenta en el equipo servidor.",
+    "ja": "サーバーのコンピューター上で最初のアカウントを作成してください。",
+    "zh-CN": "请在服务器计算机上设置首个账户。",
+    "ru": "Создайте первую учётную запись на компьютере сервера."
+  },
+  "O primeiro acesso já foi configurado.": {
+    "pt-BR": "O primeiro acesso já foi configurado.",
+    "en": "The first account is already configured.",
+    "es": "La primera cuenta ya está configurada.",
+    "ja": "最初のアカウントは設定済みです。",
+    "zh-CN": "首个账户已配置。",
+    "ru": "Первая учётная запись уже настроена."
+  },
+  "Usuário ou senha inválidos.": {
+    "pt-BR": "Usuário ou senha inválidos.",
+    "en": "Invalid username or password.",
+    "es": "Usuario o contraseña incorrectos.",
+    "ja": "ユーザー名またはパスワードが無効です。",
+    "zh-CN": "用户名或密码无效。",
+    "ru": "Неверное имя пользователя или пароль."
+  },
+  "Muitas tentativas. Aguarde 15 minutos antes de tentar novamente.": {
+    "pt-BR": "Muitas tentativas. Aguarde 15 minutos antes de tentar novamente.",
+    "en": "Too many attempts. Wait 15 minutes before trying again.",
+    "es": "Demasiados intentos. Espere 15 minutos antes de volver a intentarlo.",
+    "ja": "試行回数が多すぎます。15分待ってからお試しください。",
+    "zh-CN": "尝试次数过多。请等待15分钟后重试。",
+    "ru": "Слишком много попыток. Повторите через 15 минут."
+  },
+  "Configure o primeiro acesso no computador servidor.": {
+    "pt-BR": "Configure o primeiro acesso no computador servidor.",
+    "en": "Set up the first account on the server computer.",
+    "es": "Configure la primera cuenta en el equipo servidor.",
+    "ja": "サーバーのコンピューター上で最初のアカウントを設定してください。",
+    "zh-CN": "请在服务器计算机上设置首个账户。",
+    "ru": "Настройте первую учётную запись на компьютере сервера."
+  },
+  "Não foi possível acessar a autenticação. Verifique a configuração do servidor.": {
+    "pt-BR": "Não foi possível acessar a autenticação. Verifique a configuração do servidor.",
+    "en": "Unable to access authentication. Check the server configuration.",
+    "es": "No se pudo acceder a la autenticación. Revise la configuración del servidor.",
+    "ja": "認証にアクセスできません。サーバー設定を確認してください。",
+    "zh-CN": "无法访问身份验证。请检查服务器配置。",
+    "ru": "Ошибка доступа к аутентификации. Проверьте настройки сервера."
+  }
+}
