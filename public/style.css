@@ -835,6 +835,25 @@ form>.primary {
   }
 }
 
+.login-main {
+  max-width:480px;
+  margin:60px auto;
+  padding:0 20px;
+}
+.login-panel {
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:5px;
+  padding:28px;
+}
+.login-panel>p { font-size:12px; margin:12px 0; }
+.demo-entry { display:block; font-size:11px; margin-top:24px; }
+#login-error { color:#a23232; }
+[data-theme="dark"] #login-error { color:#e8a4a4; }
+@media(max-width:600px) {
+  .app-header:has(#logout:not([hidden])) { flex-wrap:wrap; height:auto; padding-top:12px; padding-bottom:12px; }
+}
+
 .theme-toggle {
   flex-shrink:0;
   font-size:11px;
