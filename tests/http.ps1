@@ -18,6 +18,15 @@ try {
     if(-not $ready){throw 'Test server did not start'}
     $state=$initial.Content|ConvertFrom-Json;$token=$state.csrf;if($state.configured){throw 'Expected isolated empty auth database'}
     Verify 'Anonymous API blocked' (Invoke-WebRequest "$baseUrl/api.php" -SkipHttpErrorCheck).StatusCode 401
+    $catalog=Get-Content (Join-Path $project 'src/locales.json') -Raw | ConvertFrom-Json -AsHashtable
+    foreach($language in @('en','pt-BR','es','ja','zh-CN','ru')) {
+        $localized=Invoke-WebRequest "$baseUrl/api.php" -Headers @{'X-Pulse-Language'=$language} -SkipHttpErrorCheck
+        Verify "Localized API status $language" $localized.StatusCode 401
+        if(($localized.Content | ConvertFrom-Json).error -cne $catalog['Entre na sua conta para acessar o painel.'][$language]){throw "Wrong API language $language"}
+    }
+    Verify 'Localization script' (Invoke-WebRequest "$baseUrl/i18n.js").StatusCode 200
+    Verify 'Translation catalog' (Invoke-WebRequest "$baseUrl/messages.js").StatusCode 200
+    Verify 'Private translation source' (Invoke-WebRequest "$baseUrl/src/locales.json" -SkipHttpErrorCheck).StatusCode 404
     Verify 'Fictional demo available' (Invoke-WebRequest "$baseUrl/?demo=1").StatusCode 200
     $password=[guid]::NewGuid().ToString('N')+[guid]::NewGuid().ToString('N')
     Verify 'Weak password rejected' (Send-Auth $session $token @{action='setup';username='test-admin';password='short'}).StatusCode 422
