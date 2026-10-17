@@ -23,6 +23,21 @@ $result=['status'=>'down','http_code'=>503,'latency_ms'=>50,'detail'=>'Unavailab
 expect((int)$db->query('SELECT COUNT(*) FROM incidents')->fetchColumn()===1,'Repeated failure opens only one incident');
 $result['status']='slow';recordCheck($db,1,$result,$now);expect((int)$db->query('SELECT closed_at FROM incidents')->fetchColumn()===$now,'Available but slow closes downtime');
 $data=snapshot($db);expect($data['monitors'][0]['uptime']===33.33,'Availability calculated from samples');expect(count($data['monitors'][0]['history'])===3,'History persisted');
+ensureMonitorSchema($db);
 expect(count(dueMonitors($db,$now+299))===0,'Collector waits for configured interval');
 expect(count(dueMonitors($db,$now+300))===1,'Collector selects monitor when due');
+manageMonitor($db,['action'=>'pause','id'=>1]);
+expect(count(dueMonitors($db,$now+9999))===0,'Paused monitor never selected by collector');
+expect((int)$db->query('SELECT COUNT(*) FROM checks')->fetchColumn()===3,'Pause preserves history');
+manageMonitor($db,['action'=>'resume','id'=>1]);
+expect(count(dueMonitors($db,$now))===1,'Resume schedules an immediate check');
+manageMonitor($db,['action'=>'update','id'=>1,'name'=>'Edited','url'=>'https://example.org','interval_seconds'=>900,'slow_ms'=>3000,'expected_text'=>'Example']);
+expect($db->query('SELECT name FROM monitors')->fetchColumn()==='Edited','Edit persists configuration');
+expect((int)$db->query('SELECT COUNT(*) FROM checks')->fetchColumn()===3,'Edit preserves history');
+$rejected=false;try{manageMonitor($db,['action'=>'delete','id'=>1,'confirmation'=>'wrong']);}catch(InvalidArgumentException){$rejected=true;}
+expect($rejected,'Delete requires exact monitor name confirmation');
+manageMonitor($db,['action'=>'delete','id'=>1,'confirmation'=>'Edited']);
+expect((int)$db->query('SELECT COUNT(*) FROM monitors')->fetchColumn()===0,'Delete removes monitor');
+expect((int)$db->query('SELECT COUNT(*) FROM checks')->fetchColumn()===0,'Delete removes check history');
+expect((int)$db->query('SELECT COUNT(*) FROM incidents')->fetchColumn()===0,'Delete removes incidents');
 echo "$passed assertions passed.\n";
