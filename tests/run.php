@@ -3,9 +3,14 @@ declare(strict_types=1);
 require dirname(__DIR__).'/src/bootstrap.php';
 $passed=0;
 function expect(bool $condition,string $label): void { global $passed; if(!$condition)throw new RuntimeException('FAIL: '.$label); $passed++; echo 'PASS: '.$label.PHP_EOL; }
-foreach(['127.0.0.1','10.1.2.3','192.168.0.1','169.254.169.254','100.100.1.1','0.0.0.0','224.0.0.1','::1','not-an-ip'] as $ip) expect(!publicIpv4($ip),'Block '.$ip);
+foreach(['127.0.0.1','10.1.2.3','172.16.0.1','192.168.0.1','169.254.169.254','100.100.1.1','0.0.0.0','192.0.0.8','192.0.2.1','192.88.99.1','198.18.0.1','198.51.100.1','203.0.113.1','224.0.0.1','255.255.255.255','::1','not-an-ip'] as $ip) expect(!publicIpv4($ip),'Block '.$ip);
 expect(publicIpv4('1.1.1.1'),'Allow public IPv4');
-foreach(['file:///etc/passwd','http://user:password@example.com','https://example.com:8080','javascript:alert(1)'] as $url){$rejected=false;try{validateMonitor(['name'=>'Test','url'=>$url]);}catch(InvalidArgumentException){$rejected=true;}expect($rejected,'Reject unsafe URL');}
+foreach(['file:///etc/passwd','http://user:password@example.com','https://example.com:8080','javascript:alert(1)','http://127.0.0.1','http://localhost','http://server.local','http://[::1]','https://example.com/#secret'] as $url){$rejected=false;try{validateMonitor(['name'=>'Test','url'=>$url]);}catch(InvalidArgumentException){$rejected=true;}expect($rejected,'Reject unsafe URL');}
+foreach (['name','url','expected_text'] as $field) {
+    $input=['name'=>'Test','url'=>'https://example.com']; $input[$field]=['invalid'];
+    $rejected=false; try { validateMonitor($input); } catch (InvalidArgumentException) { $rejected=true; }
+    expect($rejected,'Reject structured input in '.$field);
+}
 expect(validateMonitor(['name'=>' Test ','url'=>'https://example.com'])['name']==='Test','Normalize valid monitor');
 expect(checkUrl(['url'=>'http://127.0.0.1','slow_ms'=>1000,'expected_text'=>''])['status']==='down','Block local request before connection');
 // Disposable in-memory database: never touches local monitor history.
