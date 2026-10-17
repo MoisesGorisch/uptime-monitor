@@ -1246,5 +1246,133 @@
     "ja": "認証にアクセスできません。サーバー設定を確認してください。",
     "zh-CN": "无法访问身份验证。请检查服务器配置。",
     "ru": "Ошибка доступа к аутентификации. Проверьте настройки сервера."
+  },
+  "Editar": {
+    "pt-BR": "Editar",
+    "en": "Edit",
+    "es": "Editar",
+    "ja": "編集",
+    "zh-CN": "编辑",
+    "ru": "Изменить"
+  },
+  "Pausar": {
+    "pt-BR": "Pausar",
+    "en": "Pause",
+    "es": "Pausar",
+    "ja": "一時停止",
+    "zh-CN": "暂停",
+    "ru": "Приостановить"
+  },
+  "Retomar": {
+    "pt-BR": "Retomar",
+    "en": "Resume",
+    "es": "Reanudar",
+    "ja": "再開",
+    "zh-CN": "恢复",
+    "ru": "Возобновить"
+  },
+  "Excluir": {
+    "pt-BR": "Excluir",
+    "en": "Delete",
+    "es": "Eliminar",
+    "ja": "削除",
+    "zh-CN": "删除",
+    "ru": "Удалить"
+  },
+  "Pausado": {
+    "pt-BR": "Pausado",
+    "en": "Paused",
+    "es": "Pausado",
+    "ja": "一時停止中",
+    "zh-CN": "已暂停",
+    "ru": "Приостановлен"
+  },
+  "Editar monitor": {
+    "pt-BR": "Editar monitor",
+    "en": "Edit monitor",
+    "es": "Editar monitor",
+    "ja": "監視対象を編集",
+    "zh-CN": "编辑监控项",
+    "ru": "Изменить монитор"
+  },
+  "Salvar alterações": {
+    "pt-BR": "Salvar alterações",
+    "en": "Save changes",
+    "es": "Guardar cambios",
+    "ja": "変更を保存",
+    "zh-CN": "保存更改",
+    "ru": "Сохранить изменения"
+  },
+  "Excluir monitor": {
+    "pt-BR": "Excluir monitor",
+    "en": "Delete monitor",
+    "es": "Eliminar monitor",
+    "ja": "監視対象を削除",
+    "zh-CN": "删除监控项",
+    "ru": "Удалить монитор"
+  },
+  "Cancelar": {
+    "pt-BR": "Cancelar",
+    "en": "Cancel",
+    "es": "Cancelar",
+    "ja": "キャンセル",
+    "zh-CN": "取消",
+    "ru": "Отмена"
+  },
+  "Excluir permanentemente": {
+    "pt-BR": "Excluir permanentemente",
+    "en": "Delete permanently",
+    "es": "Eliminar permanentemente",
+    "ja": "完全に削除",
+    "zh-CN": "永久删除",
+    "ru": "Удалить навсегда"
+  },
+  "O monitor, suas verificações e seus incidentes serão excluídos permanentemente.": {
+    "pt-BR": "O monitor, suas verificações e seus incidentes serão excluídos permanentemente.",
+    "en": "The monitor, its checks and its incidents will be permanently deleted.",
+    "es": "El monitor, sus verificaciones y sus incidentes se eliminarán permanentemente.",
+    "ja": "監視対象とそのチェック履歴・インシデントは完全に削除されます。",
+    "zh-CN": "监控项及其检查记录和故障事件将被永久删除。",
+    "ru": "Монитор, история проверок и инциденты будут удалены навсегда."
+  },
+  "Digite o nome do monitor para confirmar": {
+    "pt-BR": "Digite o nome do monitor para confirmar",
+    "en": "Type the monitor name to confirm",
+    "es": "Escriba el nombre del monitor para confirmar",
+    "ja": "監視対象の名前を入力して確認",
+    "zh-CN": "输入监控项名称以确认",
+    "ru": "Введите имя монитора для подтверждения"
+  },
+  "Confirme o nome do monitor para excluir.": {
+    "pt-BR": "Confirme o nome do monitor para excluir.",
+    "en": "Confirm the monitor name to delete it.",
+    "es": "Confirme el nombre del monitor para eliminarlo.",
+    "ja": "削除するには監視対象の名前を確認してください。",
+    "zh-CN": "请确认监控项名称以删除。",
+    "ru": "Подтвердите имя монитора для удаления."
+  },
+  "Retome o monitor antes de verificar.": {
+    "pt-BR": "Retome o monitor antes de verificar.",
+    "en": "Resume the monitor before checking.",
+    "es": "Reanude el monitor antes de verificar.",
+    "ja": "チェックする前に監視を再開してください。",
+    "zh-CN": "请先恢复监控项再检查。",
+    "ru": "Возобновите монитор перед проверкой."
+  },
+  "Monitor pausado. O histórico foi preservado; nenhuma verificação será executada até a retomada.": {
+    "pt-BR": "Monitor pausado. O histórico foi preservado; nenhuma verificação será executada até a retomada.",
+    "en": "Monitor paused. History is preserved; no checks will run until resumed.",
+    "es": "Monitor pausado. Se conserva el historial; no habrá verificaciones hasta reanudarlo.",
+    "ja": "一時停止中です。履歴は保持され、再開するまでチェックは実行されません。",
+    "zh-CN": "监控项已暂停。历史记录已保留；恢复前不会执行检查。",
+    "ru": "Монитор приостановлен. История сохранена; проверки продолжатся после возобновления."
+  },
+  "Editar preserva o histórico. As novas configurações serão usadas nas próximas verificações.": {
+    "pt-BR": "Editar preserva o histórico. As novas configurações serão usadas nas próximas verificações.",
+    "en": "Editing preserves history. New settings apply to future checks.",
+    "es": "La edición conserva el historial. Los nuevos ajustes se aplican a futuras verificaciones.",
+    "ja": "編集しても履歴は保持されます。新しい設定は今後のチェックに適用されます。",
+    "zh-CN": "编辑会保留历史记录。新设置将用于后续检查。",
+    "ru": "Изменение сохраняет историю. Новые настройки применятся к будущим проверкам."
   }
 }
