@@ -4,7 +4,7 @@ A local-first uptime monitor built with **PHP, vanilla JavaScript and SQL**. Tra
 
 Built by [Moisés Gorisch](https://github.com/MoisesGorisch) as a portfolio project connecting IT operations, web development and automation.
 
-![Pulse dashboard with clearly labeled fictional data](https://raw.githubusercontent.com/MoisesGorisch/uptime-monitor/798432339271cfff08b7796d9ccaf82f68bc3110/docs/dashboard.jpg)
+![Pulse dashboard with clearly labeled fictional data](https://raw.githubusercontent.com/MoisesGorisch/uptime-monitor/18edc962145c53ecc46c0c7de203357e1b415f52/docs/dashboard.jpg)
 
 ## Features
 
@@ -18,7 +18,7 @@ Built by [Moisés Gorisch](https://github.com/MoisesGorisch) as a portfolio proj
 - Open an incident on failure and close it when the endpoint recovers, including slow but successful responses.
 - Explore a separate, read-only demonstration with fictional data using `?demo=1`.
 - Use SQLite for a zero-setup local database; PDO MySQL configuration is also available.
-- Responsive dashboard in Brazilian Portuguese; project documentation in English.
+- Responsive dashboard in English (default), Brazilian Portuguese, Spanish, Japanese, Simplified Chinese and Russian; language preference saved in the browser.
 - Compact service list, state/search filters and expandable diagnostic history.
 - Light/dark themes with a local browser preference and system-theme fallback.
 - Stale-data warnings when checks stop arriving; failed connections do not show misleading response times.
@@ -123,6 +123,7 @@ php tests/run.php
 node --check public/app.js
 # PowerShell: with the local app running
 php tests/auth.php
+php tests/i18n.php
 .\tests\http.ps1
 ```
 
