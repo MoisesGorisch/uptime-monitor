@@ -5,7 +5,7 @@ require dirname(__DIR__).'/src/bootstrap.php';
 $lock=fopen(dirname(__DIR__).'/var/worker.lock','c');
 if (!flock($lock,LOCK_EX|LOCK_NB)) exit("Another check is running.\n");
 try {
-    $db=db(); $q=$db->prepare('SELECT * FROM monitors WHERE last_checked IS NULL OR last_checked + interval_seconds <= ?'); $q->execute([time()]);
-    foreach ($q->fetchAll() as $m) { $result=checkUrl($m); recordCheck($db,(int)$m['id'],$result); echo $m['name'].': '.$result['status'].PHP_EOL; }
+    $db=db();
+    foreach (dueMonitors($db) as $m) { $result=checkUrl($m); recordCheck($db,(int)$m['id'],$result); echo $m['name'].': '.$result['status'].PHP_EOL; }
     $cutoff=time()-90*86400; $db->prepare('DELETE FROM checks WHERE checked_at < ?')->execute([$cutoff]);
 } finally { flock($lock,LOCK_UN); fclose($lock); }
