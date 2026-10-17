@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark"><title>Acesso — Pulse</title>
+  <script src="theme.js"></script><link rel="stylesheet" href="style.css"><script src="login.js" defer></script>
+</head>
+<body>
+  <header class="app-header"><a class="brand" href="/login">Pulse</a><span class="environment">Acesso protegido</span><button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">Modo escuro</button></header>
+  <main class="login-main"><section class="login-panel" aria-labelledby="login-heading">
+    <h1 id="login-heading">Entrar no Pulse</h1><p id="login-help">Use seu acesso para consultar e administrar os monitores.</p>
+    <form id="login-form" hidden>
+      <label>Usuário<input name="username" autocomplete="username" minlength="3" maxlength="64" pattern="[a-zA-Z0-9_.-]+" required></label>
+      <label>Senha<input id="password" name="password" type="password" autocomplete="current-password" maxlength="72" required></label>
+      <label id="confirm-label" hidden>Confirmar senha<input id="confirm-password" type="password" autocomplete="new-password" maxlength="72"></label>
+      <p id="login-error" role="alert"></p><button class="primary" id="login-submit">Entrar</button>
+    </form>
+    <p class="form-help">O coletor continua funcionando mesmo com o painel desconectado.</p>
+    <a class="demo-entry" href="/?demo=1">Ver demonstração com dados fictícios</a>
+  </section></main>
+</body></html>
