@@ -1,17 +1,16 @@
 <?php
 declare(strict_types=1);
 require dirname(__DIR__) . '/src/bootstrap.php';
+require_once dirname(__DIR__) . '/src/auth.php';
 header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store');
 header('X-Content-Type-Options: nosniff');
 ini_set('display_errors', '0');
 ini_set('session.use_strict_mode', '1');
-// This MVP is a local administration app. A public deployment needs authentication.
-if (!in_array($_SERVER['REMOTE_ADDR'] ?? '', ['127.0.0.1','::1'], true) || !preg_match('/^(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/i', $_SERVER['HTTP_HOST'] ?? '')) { http_response_code(403); echo json_encode(['error'=>'Administração disponível apenas no computador local.']); exit; }
+requireNetwork();
 if (($_SERVER['HTTP_SEC_FETCH_SITE'] ?? '') === 'cross-site') { http_response_code(403); echo json_encode(['error'=>'Origem não permitida.']); exit; }
-session_name('PULSESESSID');
-session_set_cookie_params(['httponly'=>true,'samesite'=>'Strict','secure'=>(!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')]); session_start();
-$_SESSION['csrf'] ??= bin2hex(random_bytes(24));
+authSession();
+requireAuthentication();
 try {
     $db=db();
     if ($_SERVER['REQUEST_METHOD']==='GET') { echo json_encode(snapshot($db)+['csrf'=>$_SESSION['csrf']], JSON_THROW_ON_ERROR); exit; }
