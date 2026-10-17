@@ -16,6 +16,7 @@ Built by [Moisés Gorisch](https://github.com/MoisesGorisch) as a portfolio proj
 - Use SQLite for a zero-setup local database; PDO MySQL configuration is also available.
 - Responsive dashboard in Brazilian Portuguese; project documentation in English.
 - Compact service list, state/search filters and expandable diagnostic history.
+- Light/dark themes with a local browser preference and system-theme fallback.
 - Stale-data warnings when checks stop arriving; failed connections do not show misleading response times.
 - System fonts and local assets only; no external frontend requests.
 
