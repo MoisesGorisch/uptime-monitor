@@ -8,6 +8,7 @@ Built by [Moisés Gorisch](https://github.com/MoisesGorisch) as a portfolio proj
 
 ## Features
 
+- Edit monitor settings, pause/resume checks while preserving history, and permanently delete a monitor with its history after typing its exact name.
 - Mandatory administrator login for real monitoring data, with first-use setup on the server computer and no default password.
 - Server-side sessions, logout, expiration and persistent login-attempt throttling.
 - Loopback-only access by default; explicit `-Lan` option for private IPv4 networks.
@@ -143,7 +144,7 @@ docs/            Portfolio screenshots
 ## Roadmap
 
 - A separate read-only status page and optional TLS deployment documentation.
-- Edit, pause and archive monitors.
+- Monitor groups and maintenance windows.
 - Email/webhook alerts with retry handling.
 - MySQL integration tests and database migrations.
 - Configurable incident confirmation thresholds.
